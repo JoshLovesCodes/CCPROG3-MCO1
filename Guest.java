@@ -4,7 +4,7 @@ public class Guest {
     public Guest(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.fullName = firstName + lastName;
+        this.fullName = firstName+lastName;
     }
 
     public String getFirstName() {
