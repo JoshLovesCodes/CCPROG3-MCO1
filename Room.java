@@ -10,7 +10,7 @@ public class Room {
         return this.name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return this.price;
     }
 }
