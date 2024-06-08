@@ -8,7 +8,23 @@ public class Fees {
     }
 
     public Fees(){
-        this(50.00, 0.00, 0.00);
+        this(50.00, 30.00, 150.00);
+    }
+
+    public double getBookingFee() {
+        return this.bookingFee;
+    }
+
+    public double getBaseParkingFee() {
+        return this.baseParkingFeeFee;
+    }
+
+    public double getTotalParkingFee() {
+        return this.bookingFee;
+    }
+
+    public double getBookingFee() {
+        return this.bookingFee;
     }
 
 
