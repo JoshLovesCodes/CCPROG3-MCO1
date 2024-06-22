@@ -21,6 +21,14 @@ public class Date {
         return this.day;
     }
 
+    public int getHour() {
+        return this.hour;
+    }
+
+    public int getMinute() {
+        return this.minute;
+    }
+
     public void setYear(int newYear) {
         this.year = newYear;
     }
