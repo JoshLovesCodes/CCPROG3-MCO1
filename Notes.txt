@@ -1,0 +1,72 @@
+Main
+    Attributes
+        - HRSModel : HRS
+        - HRSView : HRSView
+        - HRSController : HRSController
+
+HRSController
+    - 
+
+HRS
+    Attributes
+        - hotelList : ArrayList<Hotel>
+
+    Methods
+        - createHotel() : boolean
+        - checkHotelName() : boolean
+        - viewHotel(Hotel hotel) : void
+
+HRSView
+    -promptHotelName
+
+HotelController
+    Attributes
+    - HotelModel : HotelModel
+    - HotelView : HotelView
+
+    Methods
+    - 
+
+HotelView
+    Attributes
+    
+
+    Methods
+    - displayHighLevelInfo(Hotel hotel)
+    - displayLowLevelInfo
+    
+Hotel
+    Attributes
+    - name : String
+    - roomList : ArrayList<Room>
+    - reservationList : ArrayList<Reservation>
+    - maximumRooms : int = 50
+
+    Methods
+    - getName : String
+    - getRooms : ArrayList<Room>
+    - getReservations : ArrayList<Reservation>
+    - getMaximumRooms : int
+
+
+Reservation
+    Attributes
+    - guest : Guest
+    - checkInDate : Date
+    - checkOutDate : Date
+    - room : Room
+
+    Methods
+    - totalPrice() : double
+    - costPerNight() : double
+
+Room
+    Attributes
+    - name : String
+    - price : double = 1299.0
+
+    Methods
+    - getName() : String
+    - getPrice() : double
+
+
