@@ -27,7 +27,6 @@ HotelController
     - HotelView : HotelView
 
     Methods
-    - 
 
 HotelView
     Attributes
