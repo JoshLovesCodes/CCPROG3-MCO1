@@ -1,3 +1,6 @@
+// - MEANS DONE
+
+
 Main
     Attributes
         - HRSModel : HRS
@@ -7,7 +10,7 @@ Main
 HRSController
     - 
 
-HRS
+HRS (Model)
     Attributes
         - hotelList : ArrayList<Hotel>
 
@@ -38,12 +41,12 @@ HotelView
     - displayLowLevelInfo(Hotel hotel)
     - promptConfirmation() : String
     
-Hotel
-    Attributes
-    - name : String                             //
-    - roomList : ArrayList<Room>                //    
-    - reservationList : ArrayList<Reservation>  //
-    - maximumRooms : int = 50                   //
+Hotel (Model)
+    Attributes                                          //
+    - name : String                             
+    - roomList : ArrayList<Room>                    
+    - reservationList : ArrayList<Reservation>  
+    - maximumRooms : int = 50                   
 
     Methods
     - getName : String                                  //
