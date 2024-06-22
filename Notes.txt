@@ -16,6 +16,7 @@ HRS
         - checkHotelName() : boolean
         - viewHotel(Hotel hotel) : void
         - manageHotel() : void
+        - removeHotel(Hotel hotel) : void
         - simulateBooking() : void
 
 HRSView
@@ -39,30 +40,28 @@ HotelView
     
 Hotel
     Attributes
-    - name : String
-    - roomList : ArrayList<Room>
-    - reservationList : ArrayList<Reservation>
-    - maximumRooms : int = 50
+    - name : String                             //
+    - roomList : ArrayList<Room>                //    
+    - reservationList : ArrayList<Reservation>  //
+    - maximumRooms : int = 50                   //
 
     Methods
-    - getName : String
-    - getRooms : ArrayList<Room>
-    - getReservations : ArrayList<Reservation>
-    - getMaximumRooms : int
-    - getEarnings : double
-    - getAvailableRooms(Date) : int
-    - getBookedRooms(Date) : int
-    - getRoomInformation(Room) : Room
+    - getName : String                                  //
+    - getRoomList : ArrayList<Room>                     //
+    - getReservationList : ArrayList<Reservation>       //
+    - getMaximumRooms : int                             //
+    - getEarnings : double                              //
+    - getAvailableRooms(Date) : int                     //
+    - getBookedRooms(Date) : int                        //
     - getRoomAvailability(Room room, Date month) : int
-    - getReservationInfo(Reservation reservation) : Reservation
     - setName(String name) : boolean
     - addRoom(String name) : boolean
     - removeRoom(String name) : boolean
     - removeReservation(Guest guest) : void
-    - removeHotel(Hotel hotel) : void
+    
 
 
-Reservation
+Reservation         //
     Attributes
     - guest : Guest
     - checkInDate : Date
@@ -72,8 +71,12 @@ Reservation
     Methods
     - getTotalPrice() : double
     - getCostPerNight() : double
+    - getGuest() : Guest
+    - getCheckInDate() : Date
+    - getCheckOutDate() : Date
+    - getRoom : Room
 
-Room
+Room                //
     Attributes
     - name : String
     - price : double = 1299.0
