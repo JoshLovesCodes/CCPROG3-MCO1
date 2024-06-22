@@ -24,4 +24,20 @@ public class Reservation {
     public double getCostPerNight() {
         return this.getTotalPrice / this.totalDays;
     }
+
+    public Guest getGuest() {
+        return this.guest;
+    }
+
+    public Date getCheckInDate() {
+        return this.checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        return this.checkOutDate;
+    }
+
+    public Room getRoom() {
+        return this.room;
+    }
 }
