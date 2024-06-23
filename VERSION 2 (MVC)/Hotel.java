@@ -32,7 +32,7 @@ public class Hotel {
 
     public double getEarnings() {
         double totalEarnings;
-        for (Reservation reservation : reservationList) {
+        for (Reservation reservation : this.reservationList) {
             totalEarnings += reservation.getTotalPrice();
         }
         return totalEarnings;
@@ -40,7 +40,7 @@ public class Hotel {
 
     public int getAvailableRooms(Date date) {
         int freeRooms = 0;
-        for (Reservation reservation : reservationList) {
+        for (Reservation reservation : this.reservationList) {
             if(!(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay())) {
                 freeRooms++;
             }
@@ -50,7 +50,7 @@ public class Hotel {
 
     public int getBookedRooms(Date date) {
         int bookedRooms = 0;
-        for (Reservation reservation : reservationList) {
+        for (Reservation reservation : this.reservationList) {
             if(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay()) {
                 bookedRooms++;
             }
@@ -58,5 +58,45 @@ public class Hotel {
         return this.bookedRooms;
     }
 
-    
+    public boolean[] getRoomAvailability(Room room, int month) {
+        boolean bookedDates[30];
+
+        for(boolean day : bookedDates) {
+            day = false;
+        }
+
+        for (Reservation reservation : this.reservationList) {
+            if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
+                for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
+                    bookedDates[i] = true;
+                }
+            }
+        }
+
+        return bookedDates;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void addRoom(String name) {
+        this.roomList.add(new Room(name));
+    }
+
+    public void removeRoom(String name) {
+        for(Room room : this.roomList) {
+            if(room.getName == name) {
+                this.roomList.remove(room);
+            }
+        }
+    }
+
+    public void removeReservation(String fullName) {
+        for(Reservation reservation : this.reservationList) {
+            if(reservation.getGuest().getFullName() == fullName) {
+                this.reservationList.remove(reservation);
+            }
+        }
+    }
 }
