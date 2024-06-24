@@ -2,48 +2,106 @@
 
 
 MainModel (model for all controller)
-MainView (viewer for all controller)
+- hotelList : ArrayList<Hotel>
+
+
+
+
+
+
+HRSview
+- scanner : Scanner
++ CREATE_HOTEL : static int
++ VIEW_HOTEL : static int
++ MANAGE_HOTEL : static int
++ SIMULATE_BOOKING : static int
+
++ HRSview()
 
 
 HRS (main controlller) 
 - model : MainModel
-- view : MainView
+- view : HRSview
 
 + HRS()
 + displayInterface() : void
 
 
 
+
+
+CreatorView
+- scanner : Scanner
++ CREATE : static int
+
++ CreatorView()
+
+
 Creator (sub controller)
 - model : MainModel
-- view : MainView
+- view : CreatorView
 
-+ Creator(model : MainModel, view : Mainview)
++ Creator(model : MainModel)
 + displayInterface() : void
 
 
+
+
+
+
+ViewerView
+- scanner : Scanner
++ HIGH_LVL : static int
++ TOTAL_ROOM : static int
++ INFO_ROOM : static int
++ INFO_RESERVATION : static int
+
++ ViewerView()
 
 Viewer (sub controller)
 - model : MainModel
-- view : MainView
+- view : ViewerView
 
-+ Viewer(model : MainModel, view : Mainview)
++ Viewer(model : MainModel)
 + displayInterface() : void
 
+
+
+
+
+ManagerView
+- scanner : Scanner
++ CHANGE_NAME : static int
++ ADD_ROOM : static int
++ REMOVE_ROOM : static int
++ UPDATE_PRICE : static int
++ REMOVE_RESERVATION : static int
++ REMOVE_HOTEL : static int
+
++ ManagerView()
 
 Manager (sub controller)
 - model : MainModel
-- view : MainView
+- view : ManagerView
 
-+ Manager(model : MainModel, view : Mainview)
++ Manager(model : MainModel)
 + displayInterface() : void
 
 
+
+
+
+BookerView
+- scanner : Scanenr
++ BOOK_ROOM : static int
+
++ BookerView()
+
 Booker (sub controller)
 - model : MainModel
-- view : MainView
+- view : BookerView
 
-+ Booker(model : MainModel, view : Mainview)
++ Booker(model : MainModel)
 + displayInterface() : void
 
 
