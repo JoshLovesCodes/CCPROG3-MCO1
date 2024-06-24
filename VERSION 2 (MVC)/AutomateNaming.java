@@ -4,7 +4,7 @@ public class AutomateNaming {
     
     private ArrayList<String> names;
     private boolean availability[];
-
+    
     public AutomateNaming() {
         this.names = new ArrayList<String>();
         this.availability = new boolean[50];

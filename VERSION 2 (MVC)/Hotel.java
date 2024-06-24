@@ -5,6 +5,7 @@ public class Hotel {
     private ArrayList<Room> roomList;
     private ArrayList<Reservation> reservationList;
     private int maximumRooms;
+    private AutomateNaming automateNaming;
 
     public Hotel(String name){
         this.name = name;
@@ -12,13 +13,14 @@ public class Hotel {
         this.reservationList = new ArrayList<Reservation>();
         this.maximumRooms = 50;
         this.roomList.add(new Room("101"));
+        this.automateNaming = new AutomateNaming();
     }
 
     public String getName() {
         return this.name;
     }
 
-    public ArrayList<Rooms> getRoomList() {
+    public ArrayList<Room> getRoomList() {
         return this.roomList;
     }
 
@@ -31,7 +33,7 @@ public class Hotel {
     }
 
     public double getEarnings() {
-        double totalEarnings;
+        double totalEarnings = 0;
         for (Reservation reservation : this.reservationList) {
             totalEarnings += reservation.getTotalPrice();
         }
@@ -45,7 +47,7 @@ public class Hotel {
                 freeRooms++;
             }
         }
-        return this.freeRooms;
+        return freeRooms;
     }
 
     public int getBookedRooms(Date date) {
@@ -55,11 +57,11 @@ public class Hotel {
                 bookedRooms++;
             }
         }
-        return this.bookedRooms;
+        return bookedRooms;
     }
 
     public boolean[] getRoomAvailability(Room room, int month) {
-        boolean bookedDates[30];
+        boolean[] bookedDates = new boolean[30];
 
         for(boolean day : bookedDates) {
             day = false;
@@ -81,12 +83,13 @@ public class Hotel {
     }
 
     public void addRoom(String name) {
-        this.roomList.add(new Room(name));
+        this.roomList.add(new Room(this.automateNaming.getName()));
     }
 
     public void removeRoom(String name) {
         for(Room room : this.roomList) {
-            if(room.getName == name) {
+            if(room.getName() == name) {
+                this.automateNaming.setAvailability(name);
                 this.roomList.remove(room);
             }
         }
