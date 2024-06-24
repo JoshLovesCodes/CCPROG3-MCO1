@@ -6,15 +6,12 @@ MainModel (model for all controller)
 
 
 
-
-
-
 HRSview
 - scanner : Scanner
-+ CREATE_HOTEL : static int
-+ VIEW_HOTEL : static int
-+ MANAGE_HOTEL : static int
-+ SIMULATE_BOOKING : static int
++ CREATE_HOTEL : static final int
++ VIEW_HOTEL : static final int
++ MANAGE_HOTEL : static final int
++ SIMULATE_BOOKING : static final int
 
 + HRSview()
 
@@ -22,6 +19,11 @@ HRSview
 HRS (main controlller) 
 - model : MainModel
 - view : HRSview
+- creator : Creator;
+- viewer: HotelViewer;
+- manager : HotelManager;
+- booker : Booker;
+
 
 + HRS()
 + displayInterface() : void
@@ -32,7 +34,7 @@ HRS (main controlller)
 
 CreatorView
 - scanner : Scanner
-+ CREATE : static int
++ CREATE : static final int
 
 + CreatorView()
 
@@ -47,44 +49,42 @@ Creator (sub controller)
 
 
 
-
-
-ViewerView
+HotelViewerView
 - scanner : Scanner
-+ HIGH_LVL : static int
-+ TOTAL_ROOM : static int
-+ INFO_ROOM : static int
-+ INFO_RESERVATION : static int
++ HIGH_LVL : static final int
++ TOTAL_ROOM : static final int
++ INFO_ROOM : static final int
++ INFO_RESERVATION : static final int
 
-+ ViewerView()
++ HotelViewerView()
 
-Viewer (sub controller)
+HotelViewer (sub controller)
 - model : MainModel
-- view : ViewerView
+- view : HotelViewerView
 
-+ Viewer(model : MainModel)
++ HotelViewer(model : MainModel)
 + displayInterface() : void
 
 
 
 
 
-ManagerView
+HotelManagerView
 - scanner : Scanner
-+ CHANGE_NAME : static int
-+ ADD_ROOM : static int
-+ REMOVE_ROOM : static int
-+ UPDATE_PRICE : static int
-+ REMOVE_RESERVATION : static int
-+ REMOVE_HOTEL : static int
++ CHANGE_NAME : static final int
++ ADD_ROOM : static final int
++ REMOVE_ROOM : static final int
++ UPDATE_PRICE : static final int
++ REMOVE_RESERVATION : static final int
++ REMOVE_HOTEL : static final int
 
-+ ManagerView()
++ HotelManagerView()
 
-Manager (sub controller)
+HotelManager (sub controller)
 - model : MainModel
-- view : ManagerView
+- view : HotelManagerView
 
-+ Manager(model : MainModel)
++ HotelManager(model : MainModel)
 + displayInterface() : void
 
 
@@ -93,7 +93,7 @@ Manager (sub controller)
 
 BookerView
 - scanner : Scanenr
-+ BOOK_ROOM : static int
++ BOOK_ROOM : static final int
 
 + BookerView()
 
