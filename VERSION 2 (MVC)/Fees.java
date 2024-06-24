@@ -15,7 +15,7 @@ public class Fees {
     }
 
     public double getAmenitiesFee() {
-        return this.amenitiesFeeFee;
+        return this.amenitiesFee;
     }
 
     public double getTotalFees() {

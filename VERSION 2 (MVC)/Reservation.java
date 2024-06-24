@@ -11,18 +11,18 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
         this.room = room;
         this.fees = fees;
-        this.totalDays = this.checkOutDate.getDay - this.checkInDate.getDay;
+        this.totalDays = this.checkOutDate.getDay() - this.checkInDate.getDay();
     }
 
     public double getTotalPrice() {
         if(this.totalDays == 0)
-            return this.room.getPrice + this.fees.getTotalFees;
+            return this.room.getPrice() + this.fees.getTotalFees();
         else 
-            return this.room.getPrice * this.totalDays + this.fees.getTotalFees;
+            return this.room.getPrice() * this.totalDays + this.fees.getTotalFees();
     }
 
     public double getCostPerNight() {
-        return this.getTotalPrice / this.totalDays;
+        return this.getTotalPrice() / this.totalDays;
     }
 
     public Guest getGuest() {
