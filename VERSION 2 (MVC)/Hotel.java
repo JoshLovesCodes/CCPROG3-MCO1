@@ -12,8 +12,8 @@ public class Hotel {
         this.roomList = new ArrayList<Room>();
         this.reservationList = new ArrayList<Reservation>();
         this.maximumRooms = 50;
-        this.roomList.add(new Room("101"));
         this.automateNaming = new AutomateNaming();
+        this.roomList.add(new Room(this.automateNaming.getName()));
     }
 
     public String getName() {
