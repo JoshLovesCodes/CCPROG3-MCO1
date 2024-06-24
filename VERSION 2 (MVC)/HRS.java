@@ -16,6 +16,23 @@ public class HRS {
     }   
     
     public void displayInterface() {
-        
+        int input = 0;
+
+        switch(input) {
+            case HRSview.CREATE_HOTEL : 
+                this.creator.displayInterface(); 
+                break;
+            case HRSview.VIEW_HOTEL : 
+                this.viewer.displayInterface(); 
+                break;
+            case HRSview.MANAGE_HOTEL : 
+                this.manager.displayInterface(); 
+                break;
+            case HRSview.SIMULATE_BOOKING : 
+                this.booker.displayInterface(); 
+                break;
+            default: 
+                System.out.print("INVALID INPUT PLEASE TRY AGAIN");
+        }
     }
 }
