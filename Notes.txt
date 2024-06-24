@@ -1,50 +1,57 @@
 // - MEANS DONE
 
 
-Main
-    Attributes
-        - HRSModel : HRS
-        - HRSView : HRSView
-        - HRSController : HRSController
+MainModel (model for all controller)
+MainView (viewer for all controller)
 
-HRSController
-    - 
 
-HRS (Model)
-    Attributes
-        - hotelList : ArrayList<Hotel>
+HRS (main controlller) 
+- model : MainModel
+- view : MainView
 
-    Methods
-        - createHotel() : boolean
-        - checkHotelName() : boolean
-        - viewHotel(Hotel hotel) : void
-        - manageHotel() : void
-        - removeHotel(Hotel hotel) : void
-        - simulateBooking() : void
++ HRS()
++ displayInterface() : void
 
-HRSView
-    -promptHotelName
 
-HotelController
-    Attributes
-    - HotelModel : HotelModel
-    - HotelView : HotelView
 
-    Methods
-    - setName(String name) : boolean
-    - addRoom(String name) : boolean
-    - removeRoom(String name) : boolean
-    - removeReservation(Guest guest) : boolean
+Creator (sub controller)
+- model : MainModel
+- view : MainView
 
-HotelView
-    Attributes
-    
++ Creator(model : MainModel, view : Mainview)
++ displayInterface() : void
 
-    Methods
-    - displayHighLevelInfo(Hotel hotel)
-    - displayLowLevelInfo(Hotel hotel)
-    - promptConfirmation() : String
-    
+
+
+Viewer (sub controller)
+- model : MainModel
+- view : MainView
+
++ Viewer(model : MainModel, view : Mainview)
++ displayInterface() : void
+
+
+Manager (sub controller)
+- model : MainModel
+- view : MainView
+
++ Manager(model : MainModel, view : Mainview)
++ displayInterface() : void
+
+
+Booker (sub controller)
+- model : MainModel
+- view : MainView
+
++ Booker(model : MainModel, view : Mainview)
++ displayInterface() : void
+
+
+
+
+
+
+
 Hotel (Model)
     Attributes                                          //
     - name : String                             
