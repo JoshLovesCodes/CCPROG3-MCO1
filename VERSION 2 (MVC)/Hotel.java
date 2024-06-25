@@ -82,8 +82,24 @@ public class Hotel {
         this.name = name;
     }
 
-    public void addRoom(String name) {
-        this.roomList.add(new Room(this.automateNaming.getName()));
+    public boolean addRoom() {
+        if(this.roomList.size() < this.maximumRooms) {
+            this.roomList.add(new Room(this.automateNaming.getName()));
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean addRoom(int ctr) {
+        if(this.roomList.size() + ctr <= this.maximumRooms) {
+            for(int i = 0; i < ctr; i++)
+                addRoom();
+
+            return true;
+        }
+        
+        return false;
     }
 
     public boolean removeRoom(String name) {
