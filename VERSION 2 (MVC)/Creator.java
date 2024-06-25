@@ -8,6 +8,14 @@ public class Creator {
     }
 
     public void displayInterface() {
+        this.view.displayLongDivider();
+        String newHotelName = this.view.promptHotelName();
+        boolean isCreationSuccessful = this.model.createHotel(newHotelName);
         
+        if(isCreationSuccessful) {
+            displayNewHotelSuccessful(newHotelName);
+        } else {
+            displayNewHotelFailed();
+        }
     }
 }
