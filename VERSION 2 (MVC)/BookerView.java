@@ -7,20 +7,27 @@ public class BookerView {
         this.scanenr = new Scanner(System.in);   
     }
 
-    public String promptMonth() {
-        System.out.println("Enter month: ");
-        return this.scanenr.nextLine();
+    public void displayCheckIn() {
+        System.out.println("Please eneter your Check In Date");
+    }
+
+    public void displayCheckOut() {
+        System.out.println("Please eneter your Check Out Date");
     }
     
-    public String promptDay() {
-        System.out.println("Enter day: ");
-        return this.scanenr.nextLine();
-    }
-    
-    
-    public String promptYear() {
+    public int promptYear() {
         System.out.println("Enter year: ");
-        return this.scanenr.nextLine();
+        return this.scanenr.nextInt();
+    }
+
+    public int promptMonth() {
+        System.out.println("Enter month: ");
+        return this.scanenr.nextInt();
+    }
+    
+    public int promptDay() {
+        System.out.println("Enter day: ");
+        return this.scanenr.nextInt();
     }
     
     public String promptFirstName() {

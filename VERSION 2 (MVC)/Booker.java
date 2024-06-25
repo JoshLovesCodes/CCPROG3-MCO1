@@ -8,6 +8,24 @@ public class Booker {
     }
 
     public void displayInterface() {
+        this.view.displayCheckIn();
+
+        int year = this.view.promptYear();
+        int month = this.view.promptMonth();
+        int day = this.view.promptDay();
         
+        Date checkIn = new Date(year, month, day);
+        
+        this.view.displayCheckOut();
+        year = this.view.promptYear();
+        month = this.view.promptMonth();
+        day = this.view.promptDay();
+
+        Date checkOut = new Date(year, month, day);
+
+        String firstName = this.view.promptFirstName();
+        String lastName = this.view.promptLastName();
+
+        Guest guest = new Guest(firstName, lastName);
     }   
 }
