@@ -30,9 +30,9 @@ public class CreatorView {
         System.out.println("Created '" + newHotelName +"' successfully!");
     }
 
-    public void displayNewHotelFailed(String newHotelName) {
+    public void displayNewHotelFailed() {
         displayShortDivider();
 
-        System.out.println("Creating hotel failed.");
+        System.out.println("Creating hotel failed. Enter a unique name.");
     }
 }
