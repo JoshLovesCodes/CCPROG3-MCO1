@@ -29,6 +29,24 @@ public class HotelViewerView {
         return this.scanner.nextLine();
     }
 
+    public String promptLastName() {
+        System.out.println("Enter last name: ");
+
+        return this.scanner.next();
+    }
+
+    public String promptFirstName() {
+        System.out.println("Enter first name: ");
+
+        return this.scanner.next();
+    }
+
+    public String promptRoomName() {
+        System.out.println("What is the room name? ");
+
+        return this.scanner.nextLine();
+    }
+
     public int promptMonth() {
         System.out.println("Enter month (1-12): ");
 
@@ -47,7 +65,7 @@ public class HotelViewerView {
         return this.scanner.nextInt;
     }
 
-    public int promptRoomName() {
+    public String promptRoomName() {
         System.out.println("Enter Room Name: ");
 
         return this.scanner.nextLine;
