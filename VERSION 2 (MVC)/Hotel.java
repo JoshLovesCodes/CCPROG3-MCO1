@@ -19,8 +19,8 @@ public class Hotel {
 
     public String getName() {
         return this.name;
-    }
-
+    }   
+    
     public ArrayList<Room> getRoomList() {
         return this.roomList;
     }

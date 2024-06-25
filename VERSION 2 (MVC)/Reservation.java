@@ -5,12 +5,12 @@ public class Reservation {
     private Fees fees;
     private int totalDays;
 
-    public Reservation(Guest guest, Date checkInDate, Date checkOutDate, Room room, Fees fees) {
+    public Reservation(Guest guest, Date checkInDate, Date checkOutDate, Room room) {
         this.guest = guest;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.room = room;
-        this.fees = fees;
+        // this.fees = fees;
         this.totalDays = this.checkOutDate.getDay() - this.checkInDate.getDay();
     }
 
