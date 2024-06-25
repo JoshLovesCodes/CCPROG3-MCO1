@@ -5,11 +5,7 @@ public class HotelViewerView {
     public static final int HIGH_LVL = 1, TOTAL_ROOM = 2, INFO_ROOM = 3, INFO_RESERVATION = 4, INFO_EXIT = 5;
 
     public HotelViewerView() {
-<<<<<<< HEAD
         this.scanner = new Scanner(System.in);
-=======
-
->>>>>>> 998d73b0a1993963a5db8cb8d0ea288cb127630e
     }
 
     public int promptInfoMenuResponse() {
