@@ -20,7 +20,7 @@ public class CreatorView {
 
         System.out.println("Enter the name of new hotel: ");
 
-        return this.scanner.next();
+        return this.scanner.nextLine();
     }
 
     public void displayNewHotelSuccessful(String newHotelName) {
