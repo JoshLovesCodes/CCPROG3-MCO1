@@ -14,12 +14,17 @@ public class BookerView {
     public void displayCheckOut() {
         System.out.println("Please eneter your Check Out Date");
     }
+
+    public String promptHotelName() {
+        System.out.println("Enter Hotel name: ");
+        return this.scanenr.nextLine();
+    }
     
     public int promptYear() {
         System.out.println("Enter year: ");
         return this.scanenr.nextInt();
     }
-
+    
     public int promptMonth() {
         System.out.println("Enter month: ");
         return this.scanenr.nextInt();
@@ -47,4 +52,10 @@ public class BookerView {
     public void displayReservationFailed() {
         System.out.println("Hotel is fully booked please select a different date");
     }
+
+    public void displayHotelNotFound() {
+        System.out.println("Hotel does not exist");
+    }
+
+    
 }

@@ -7,29 +7,35 @@ public class Booker {
         this.view = new BookerView();
     }
 
-
     public void displayInterface() {
-        this.view.displayCheckIn();
 
-        int year = this.view.promptYear();
-        int month = this.view.promptMonth();
-        int day = this.view.promptDay();
-        
-        Date checkIn = new Date(year, month, day);
-        
-        this.view.displayCheckOut();
-        year = this.view.promptYear();
-        month = this.view.promptMonth();
-        day = this.view.promptDay();
+        String hotelName = this.view.promptHotelName();
+        Hotel hotel = this.model.selectHotel(hotelName);
+        if(hotel != null) {
+            this.view.displayCheckIn();
 
-        Date checkOut = new Date(year, month, day);
+            int year = this.view.promptYear();
+            int month = this.view.promptMonth();
+            int day = this.view.promptDay();
+            
+            Date checkIn = new Date(year, month, day);
+            
+            this.view.displayCheckOut();
+            year = this.view.promptYear();
+            month = this.view.promptMonth();
+            day = this.view.promptDay();
 
-        String firstName = this.view.promptFirstName();
-        String lastName = this.view.promptLastName();
+            Date checkOut = new Date(year, month, day);
 
-        Guest guest = new Guest(firstName, lastName);
+            String firstName = this.view.promptFirstName();
+            String lastName = this.view.promptLastName();
 
-        if(Date.isAfter(checkIn, checkOut))
-            this.view.displayTimeFrameFailed();
+            Guest guest = new Guest(firstName, lastName);
+
+            if(Date.isAfter(checkIn, checkOut))
+                this.view.displayTimeFrameFailed();
+        }
+        else
+            this.view.displayHotelNotFound();
     }   
 }
