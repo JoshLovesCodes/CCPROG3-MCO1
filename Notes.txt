@@ -37,8 +37,8 @@ CreatorView                             //DONE
 + CREATE : static final int
 
 + CreatorView()
-+ displayLongDivider() : void
-+ displayShortDivider() : void
++ displayLongDivider() : static final void
++ displayShortDivider() : static final void
 + promptHotelName() : String
 + displayNewHotelSuccessful() : void
 + displayNewHotelFailed() : void
