@@ -102,16 +102,34 @@ public class Hotel {
         return false;
     }
 
-    public boolean removeRoom(String name) {
+    public boolean removeRoom() {
+        int index = -1;
+
         for(Room room : this.roomList) {
-            if(room.getName() == name) {
-                this.automateNaming.setAvailability(name);
+            index = this.reservationList.indexOf(room);
+            
+            if(index == -1) {
                 this.roomList.remove(room);
                 return true;
             }
         }
 
         return false;
+    }
+
+    public int removeRoom(int ctr) {
+
+        int count = 0;
+
+        if(this.roomList.size() - ctr >= 0) {
+            for(int i = 0; i < ctr; i++)
+                if(removeRoom())
+                    count++;
+            
+            return count;
+        }
+
+        return count;
     }
     
     public boolean removeReservation(String firstName, String lastName) {
