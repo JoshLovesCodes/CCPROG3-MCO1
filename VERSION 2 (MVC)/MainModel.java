@@ -1,3 +1,4 @@
+import java.lang.classfile.instruction.ReturnInstruction;
 import java.util.ArrayList;
 
 public class MainModel {
@@ -84,5 +85,9 @@ public class MainModel {
 
     public boolean removeHotel(Hotel hotel) {
         return this.hotelList.remove(hotel);
+    }
+
+    public boolean addReservation(Hotel hotel, Guest guest, Date checkIn, Date checkOut) {
+        return hotel.addReservation(guest, checkIn, checkOut);
     }
 }
