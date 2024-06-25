@@ -126,12 +126,20 @@ public class Hotel {
     }
 
     public int removeRoom() {
+
+        boolean found = false;
+
         for(Room room : this.roomList) {
             for(Reservation reservation : this.reservationList) {
                 if(room.equals(reservation.getRoom())) {
-                    this.roomList.remove(room);
-                    return 1;
+                    found = true;
+                    break;
                 }
+            }
+
+            if(!found) {
+                this.roomList.remove(room);
+                return 1;
             }
         }
 
