@@ -16,23 +16,30 @@ public class HRS {
     }   
     
     public void displayInterface() {
-        int input = 0;
+        int input;
+        HotelViewerView.displayLongDivider();
+        this.view.displaywelcomeMessage();
+        do {
+            input = this.view.promptInfoMenuResponse();
 
-        switch(input) {
-            case HRSview.CREATE_HOTEL : 
-                this.creator.displayInterface(); 
-                break;
-            case HRSview.VIEW_HOTEL : 
-                this.viewer.displayInterface(); 
-                break;
-            case HRSview.MANAGE_HOTEL : 
-                this.manager.displayInterface(); 
-                break;
-            case HRSview.SIMULATE_BOOKING : 
-                this.booker.displayInterface(); 
-                break;
-            default: 
-                System.out.print("INVALID INPUT PLEASE TRY AGAIN");
-        }
+            switch(input) {
+                case HRSview.CREATE_HOTEL : 
+                    this.creator.displayInterface(); 
+                    break;
+                case HRSview.VIEW_HOTEL : 
+                    this.viewer.displayInterface(); 
+                    break;
+                case HRSview.MANAGE_HOTEL : 
+                    this.manager.displayInterface(); 
+                    break;
+                case HRSview.SIMULATE_BOOKING : 
+                    this.booker.displayInterface(); 
+                    break;
+                case HRSview.EXIT :
+                    input = 5;
+                default: 
+                    System.out.print("INVALID INPUT PLEASE TRY AGAIN");
+            }
+        } while(input != 5);
     }
 }
