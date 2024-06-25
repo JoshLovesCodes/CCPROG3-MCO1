@@ -8,15 +8,23 @@ public class HotelViewerView {
         this.scanner = new Scanner(System.in);
     }
 
+    public static final void displayLongDivider() {
+        System.out.println("==============================\n");
+    }
+
+    public static final void displayShortDivider() {
+        System.out.println("===============");
+    }
+    
     public int promptInfoMenuResponse() {
         System.out.println("What information do you want to see?");
         System.out.println("1) Basic Information");
         System.out.println("2) Total Number of Rooms");
         System.out.println("3) Room Information");
         System.out.println("4) Reservation Information");
-        System.out.println("5) Go Back")
-
-        return this.scanner.nextInt("Enter your choice here: ");
+        System.out.println("5) Go Back");
+        System.out.print("Enter your choice here: ");
+        return this.scanner.nextInt();
     }
 
     public String promptHotelName() {
@@ -40,35 +48,36 @@ public class HotelViewerView {
     public int promptMonth() {
         System.out.println("Enter month (1-12): ");
 
-        return this.scanner.nextInt;
+        return this.scanner.nextInt();
     }
 
     public int promptDay() {
         System.out.println("Enter day (1-31): ");
 
-        return this.scanner.nextInt;
+        return this.scanner.nextInt();
     }
 
     public int promptYear() {
         System.out.println("Enter year: ");
 
-        return this.scanner.nextInt;
+        return this.scanner.nextInt();
     }
 
     public String promptRoomName() {
         System.out.println("Enter Room Name: ");
 
-        return this.scanner.nextLine;
+        return this.scanner.nextLine();
     }
 
     public void displayHighLevelInfo(Hotel hotel) {
         System.out.println("Name: " + hotel.getName());
-        System.out.println("Total number of rooms: " + hotel.roomList.size());
+        System.out.println("Total number of rooms: " + hotel.getRoomList().size());
         System.out.println("Estimated earnings for the month: " + hotel.getEarnings());
     }
 
     public void displayRoomAvailability(Date date, int freeRooms, int bookedRooms) {
-        System.out.println("Availability of Rooms for" + date.getMonth + "/" + date.getDay + "/" + date.getYear ": ");
+        String info = "Availability of Rooms for" + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + ": ";
+        System.out.println(info);
         System.out.println("Available: " + freeRooms);
         System.out.println("Booked: " + bookedRooms);
     }

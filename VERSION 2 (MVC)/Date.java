@@ -57,7 +57,7 @@ public class Date {
         this.minute = newMinute;
     }
 
-    public String identifyMonth(int month) {
+    public static String identifyMonth(int month) {
         switch(month) {
             case 1:
                 return "January";
