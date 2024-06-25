@@ -43,8 +43,10 @@ public class Hotel {
     public int getAvailableRooms(Date date) {
         int freeRooms = 0;
         for (Reservation reservation : this.reservationList) {
-            if(!(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay())) {
-                freeRooms++;
+            if(reservation.getCheckInDate().getMonth() == date.getMonth()) {
+                if(!(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay())) {
+                    freeRooms++;
+                }
             }
         }
         return freeRooms;
@@ -53,8 +55,10 @@ public class Hotel {
     public int getBookedRooms(Date date) {
         int bookedRooms = 0;
         for (Reservation reservation : this.reservationList) {
-            if(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay()) {
-                bookedRooms++;
+            if(reservation.getCheckInDate().getMonth() == date.getMonth()) {
+                if(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay()) {
+                    bookedRooms++;
+                }
             }
         }
         return bookedRooms;
