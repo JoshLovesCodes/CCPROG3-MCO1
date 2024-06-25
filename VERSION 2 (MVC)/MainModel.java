@@ -35,6 +35,24 @@ public class MainModel {
         return null;
     }
 
+    public boolean changeHotelName(Hotel hotel, String name) {
+        if(nameChecker(name))
+            return false;
+
+        hotel.setName(name);
+        return true;
+    }
+
+
+    public boolean addRoom(Hotel hotel) {
+        return hotel.addRoom();
+    }
+
+    public boolean addRoom(Hotel hotel, int ctr) {
+        return hotel.addRoom(ctr);
+    }
+
+
     public boolean updateRoomPrice(Hotel hotel, double price) {
         if(hotel.getReservationList().size() == 0) {
             for(Room r : hotel.getRoomList()) {
