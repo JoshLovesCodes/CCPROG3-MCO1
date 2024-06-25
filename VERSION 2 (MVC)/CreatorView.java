@@ -8,11 +8,11 @@ public class CreatorView {
         this.scanner = new Scanner(System.in);
     }
 
-    private void displayLongDivider() {
+    public void displayLongDivider() {
         System.out.println("==============================");
     }
 
-    private void displayShortDivider() {
+    public void displayShortDivider() {
         System.out.println("===============");
     }
 
