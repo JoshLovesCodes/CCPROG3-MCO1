@@ -76,7 +76,7 @@ HotelViewerView                         //DONE
 + displayReservationInfo(reservation : Reservation) : void
 
 
-HotelViewer (sub controller)
+HotelViewer (sub controller)        //DONE
 - model : MainModel
 - view : HotelViewerView
 
