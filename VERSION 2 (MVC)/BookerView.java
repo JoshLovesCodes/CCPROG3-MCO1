@@ -8,7 +8,7 @@ public class BookerView {
     }
 
     public void displayCheckIn() {
-        System.out.println("Please eneter your Check In Date");
+        System.out.println("Please enter your Check In Date");
     }
 
     public void displayCheckOut() {
