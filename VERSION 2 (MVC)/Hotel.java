@@ -121,14 +121,10 @@ public class Hotel {
 
         int count = 0;
 
-        if(this.roomList.size() - ctr >= 0) {
-            for(int i = 0; i < ctr; i++)
-                if(removeRoom())
-                    count++;
+        for(int i = 0; i < ctr; i++)
+            if(removeRoom())
+                count++;
             
-            return count;
-        }
-
         return count;
     }
     
