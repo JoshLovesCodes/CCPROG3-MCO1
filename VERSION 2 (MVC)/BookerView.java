@@ -53,6 +53,10 @@ public class BookerView {
         System.out.println("Hotel is fully booked please select a different date");
     }
 
+    public void displayReservationSuccess() {
+        System.out.println("Reservation has been successfully added");
+    }
+
     public void displayHotelNotFound() {
         System.out.println("Hotel does not exist");
     }    
