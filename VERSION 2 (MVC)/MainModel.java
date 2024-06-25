@@ -48,24 +48,6 @@ public class MainModel {
         return true;
     }
 
-
-    public boolean addRoom(Hotel hotel) {
-        return hotel.addRoom();
-    }
-
-    public boolean addRoom(Hotel hotel, int ctr) {
-        return hotel.addRoom(ctr);
-    }
-
-    public int removeRoom(Hotel hotel) {
-        return hotel.removeRoom();
-    }
-
-    public int removeRoom(Hotel hotel, int ctr) {
-        return hotel.removeRoom(ctr);
-    }
-
-
     public boolean updateRoomPrice(Hotel hotel, double price) {
         if(hotel.getReservationList().size() == 0) {
             for(Room r : hotel.getRoomList()) {
@@ -77,17 +59,7 @@ public class MainModel {
         return false;
     }
 
-
-    public boolean removeReservation(Hotel hotel, String firstName, String lastName) { 
-        return hotel.removeReservation(firstName, lastName);
-    }
-
-
     public boolean removeHotel(Hotel hotel) {
         return this.hotelList.remove(hotel);
-    }
-
-    public boolean addReservation(Hotel hotel, Guest guest, Date checkIn, Date checkOut) {
-        return hotel.addReservation(guest, checkIn, checkOut);
     }
 }
