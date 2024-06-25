@@ -7,6 +7,7 @@ public class Booker {
         this.view = new BookerView();
     }
 
+
     public void displayInterface() {
         this.view.displayCheckIn();
 
@@ -27,5 +28,8 @@ public class Booker {
         String lastName = this.view.promptLastName();
 
         Guest guest = new Guest(firstName, lastName);
+
+        if(Date.isAfter(checkIn, checkOut))
+            this.view.displayTimeFrameFailed();
     }   
 }

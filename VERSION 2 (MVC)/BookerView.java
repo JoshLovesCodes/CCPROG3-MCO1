@@ -40,6 +40,10 @@ public class BookerView {
         return this.scanenr.nextLine();
     }
 
+    public void displayTimeFrameFailed() {
+        System.out.println("Check In Date is must be before the Check Out Date");
+    }
+
     public void displayReservationFailed() {
         System.out.println("Hotel is fully booked please select a different date");
     }
