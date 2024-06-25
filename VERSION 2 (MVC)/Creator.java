@@ -8,7 +8,7 @@ public class Creator {
     }
 
     public void displayInterface() {
-        this.view.displayLongDivider();
+        CreatorView.displayLongDivider();
         String newHotelName = this.view.promptHotelName();
         boolean isCreationSuccessful = this.model.createHotel(newHotelName);
         
@@ -18,6 +18,6 @@ public class Creator {
             this.view.displayNewHotelFailed();
         }
 
-        this.view.displayLongDivider();
+        CreatorView.displayLongDivider();
     }
 }
