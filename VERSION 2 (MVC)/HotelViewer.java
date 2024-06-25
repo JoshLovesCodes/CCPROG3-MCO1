@@ -19,7 +19,7 @@ public class HotelViewer {
                     this.view.displayHighLevelInfo(hotel);
                     displayLongDivider();
                     break;
-                    
+
                 case HotelViewerView.TOTAL_ROOM :
                     displayLongDivider();
                     Hotel hotel = this.model.selectHotel(promptHotelName());
@@ -38,9 +38,10 @@ public class HotelViewer {
                     Hotel hotel = this.model.selectHotel(promptHotelName());
                     Room room = hotel.getRoom(promptRoomName());
                     int month = this.view.promptMonth();
+                    String monthInWords = date.identifyMonth(month);
                     displayShortDivider();
                     boolean[] roomCalendar = hotel.getRoomAvailability(room, month);
-                    this.view.displayRoomInformation(room, roomCalendar);
+                    this.view.displayRoomInformation(room, roomCalendar, monthInWords);
                     displayLongDivider();
                     break;
                 
