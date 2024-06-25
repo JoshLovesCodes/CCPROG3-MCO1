@@ -35,20 +35,7 @@ public class MainModel {
         return null;
     }
 
-    public boolean updateRoomPrice(Hotel hotel, double price) {
-        for(Room r : hotel.getRoomList()) {
-            if(!r.getAvailability())
-                return false;
-        }
-
-        for(Room r : hotel.getRoomList()) {
-            r.setPrice(price);
-        }
-
-        return true;
-    }
-
-
+    
     public boolean removeReservation(Hotel hotel, String firstName, String lastName) { 
         return hotel.removeReservation(firstName, lastName);
     }
