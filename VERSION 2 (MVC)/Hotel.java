@@ -60,23 +60,36 @@ public class Hotel {
         return bookedRooms;
     }
 
-    public boolean[] getRoomAvailability(Room room, int month) {
-        boolean[] bookedDates = new boolean[30];
+    // public boolean[] getRoomAvailability(Room room, int month) {
+    //     boolean[] bookedDates = new boolean[30];
 
-        for(boolean day : bookedDates) {
-            day = false;
-        }
+    //     for(boolean day : bookedDates) {
+    //         day = false;
+    //     }
 
-        for (Reservation reservation : this.reservationList) {
-            if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
-                for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
-                    bookedDates[i] = true;
-                }
+    //     for (Reservation reservation : this.reservationList) {
+    //         if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
+    //             for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
+    //                 bookedDates[i] = true;
+    //             }
+    //         }
+    //     }
+
+    //     return bookedDates;
+    // }
+
+
+    public String getRoomInfo(String name) {
+        Room room;
+
+        for(int i = 0; i < roomList.size(); i++) {
+            if(this.roomList.get(i).getName() == name) {
+                room = this.roomList.get(i);
+                break;
             }
         }
-
-        return bookedDates;
     }
+
 
     public void setName(String name) {
         this.name = name;
