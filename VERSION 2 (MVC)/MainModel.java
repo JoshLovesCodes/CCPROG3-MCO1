@@ -11,7 +11,7 @@ public class MainModel {
     
     public boolean nameChecker(String name) {
         for(Hotel h: this.hotelList) {
-            if(h.getName() == name) {
+            if(h.getName().equals(name)) {
                 return true;
             }
         }
@@ -32,7 +32,7 @@ public class MainModel {
 
     public Hotel selectHotel(String name) {
         for(Hotel h : this.hotelList) {
-            if(h.getName() == name)
+            if(h.getName().equals(name))
                 return h;
         }
 
@@ -48,7 +48,7 @@ public class MainModel {
     }
 
     public boolean updateRoomPrice(Hotel hotel, double price) {
-        if(hotel.getReservationList().size() == 0) {
+        if(hotel.getReservationList().isEmpty()) {
             for(Room r : hotel.getRoomList()) {
                 r.setPrice(price);
             }
