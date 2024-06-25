@@ -112,4 +112,8 @@ public class HotelViewerView {
         System.out.println("Reservation Cost: " + reservation.getTotalPrice());
         System.out.println("Breakdown Cost Per Night: " + reservation.getCostPerNight());
     }
+
+    public void displayHotelNotFound() {
+        System.out.println("Hotel does not exist");
+    }    
 }
