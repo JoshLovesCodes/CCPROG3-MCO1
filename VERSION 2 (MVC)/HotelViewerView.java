@@ -28,7 +28,7 @@ public class HotelViewerView {
     }
 
     public String promptHotelName() {
-        System.out.println("What is the name of the hotel? ");
+        System.out.println("Enter name of the hotel: ");
 
         return this.scanner.nextLine();
     }
