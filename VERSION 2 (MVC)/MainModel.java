@@ -4,6 +4,11 @@ public class MainModel {
     private ArrayList<Hotel> hotelList;
 
 
+    public MainModel() {
+        this.hotelList = new ArrayList<Hotel>();
+    }
+
+
     public boolean nameChecker(String name) {
         for(Hotel h: this.hotelList) {
             if(h.getName() == name) {
