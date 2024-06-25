@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import javax.naming.spi.ResolveResult;
+import java.util.Arrays;
 
 public class Hotel {
     private String name;
@@ -37,7 +37,7 @@ public class Hotel {
 
     public Room getRoom(String name) {
         for(Room r : this.roomList) {
-            if(r.getName() == name)
+            if(r.getName().equals(name))
                 return r;
         }
 
@@ -46,7 +46,7 @@ public class Hotel {
 
     public Reservation getReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
-            if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) 
+            if(reservation.getGuest().getFirstName().equals(firstName) && reservation.getGuest().getLastName().equals(lastName)) 
                 return reservation;
         }
 
@@ -88,9 +88,7 @@ public class Hotel {
     public boolean[] getRoomAvailability(Room room, int month) {
         boolean[] bookedDates = new boolean[30];
 
-        for(boolean day : bookedDates) {
-            day = false;
-        }
+        Arrays.fill(bookedDates, false);
 
         for (Reservation reservation : this.reservationList) {
             if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
@@ -128,14 +126,12 @@ public class Hotel {
     }
 
     public int removeRoom() {
-        int index = -1;
-
         for(Room room : this.roomList) {
-            index = this.reservationList.indexOf(room);
-            
-            if(index == -1) {
-                this.roomList.remove(room);
-                return 1;
+            for(Reservation reservation : this.reservationList) {
+                if(room.equals(reservation.getRoom())) {
+                    this.roomList.remove(room);
+                    return 1;
+                }
             }
         }
 
@@ -166,7 +162,7 @@ public class Hotel {
 
     public boolean removeReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
-            if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) {
+            if(reservation.getGuest().getFirstName().equals(firstName) && reservation.getGuest().getLastName().equals(lastName)) {
                 this.reservationList.remove(reservation);
                 return true;
             }
