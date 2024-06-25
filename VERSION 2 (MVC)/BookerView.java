@@ -55,7 +55,5 @@ public class BookerView {
 
     public void displayHotelNotFound() {
         System.out.println("Hotel does not exist");
-    }
-
-    
+    }    
 }

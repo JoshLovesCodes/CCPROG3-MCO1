@@ -34,6 +34,11 @@ public class Booker {
 
             if(Date.isAfter(checkIn, checkOut))
                 this.view.displayTimeFrameFailed();
+            else if(this.model.addReservation(hotel, guest, checkIn, checkOut)) {
+                
+            }
+            else
+                this.view.displayReservationFailed();
         }
         else
             this.view.displayHotelNotFound();
