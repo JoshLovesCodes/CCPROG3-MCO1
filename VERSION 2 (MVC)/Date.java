@@ -97,4 +97,21 @@ public class Date {
                 break;
         }
     }
+
+    public static boolean isAfter(Date toBeChecked, Date toCompareTo) {
+        if(toBeChecked.getYear() > toCompareTo.getYear()) {
+            return true;
+        }
+        else if(toBeChecked.getYear() == toCompareTo.getYear()) {
+            if(toBeChecked.getMonth() > toCompareTo.getMonth()) {
+                return true;
+            }
+            else if(toBeChecked.getMonth() == toCompareTo.getMonth()) {
+                if(toBeChecked.getDay() > toCompareTo.getDay())
+                    return true;
+            }
+        }
+
+        return false;
+    }
 }
