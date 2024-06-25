@@ -35,4 +35,8 @@ public class MainModel {
         return null;
     }
 
+
+    public boolean removeHotel(Hotel hotel) {
+        return this.hotelList.remove(hotel);
+    }
 }
