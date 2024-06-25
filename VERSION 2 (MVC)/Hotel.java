@@ -7,6 +7,7 @@ public class Hotel {
     private ArrayList<Reservation> reservationList;
     private int maximumRooms;
     private AutomateNaming automateNaming;
+    private AutomateReservation automateReservation;
 
     public Hotel(String name){
         this.name = name;
@@ -14,6 +15,7 @@ public class Hotel {
         this.reservationList = new ArrayList<Reservation>();
         this.maximumRooms = 50;
         this.automateNaming = new AutomateNaming();
+        this.automateReservation = new AutomateReservation(this.roomList, this.reservationList);
         this.roomList.add(new Room(this.automateNaming.getName()));
     }
 
@@ -152,26 +154,11 @@ public class Hotel {
     }
     
     public boolean addReservation(Guest guest, Date checkIn, Date checkOut) {
-        int index = -1;
-
-        for(Room r : this.roomList) {
-            index = this.reservationList.indexOf(r);
-
-            if(index == -1) {
-                this.reservationList.add(new Reservation(guest, checkIn, checkOut, r));
-                return true;
-            }
-        }
-
-        for(Room r : this.roomList) {
-            index = this.reservationList.indexOf(r);
-
-            if(index != -1) {
-                if(!Date.isAfter(this.reservationList.get(index).getCheckInDate(), checkIn) && !Date.isAfter(this.reservationList.get(index).getCheckOutDate(), checkOut)) {
-                    this.reservationList.add(new Reservation(guest, checkIn, checkOut, r));
-                    return true;
-                }
-            }
+        Reservation reservation = this.automateReservation.getReservation(guest, checkIn, checkOut);
+        
+        if(reservation != null) {
+            this.reservationList.add(reservation);
+            return true;
         }
 
         return false;
