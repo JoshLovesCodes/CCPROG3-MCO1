@@ -13,9 +13,9 @@ public class Creator {
         boolean isCreationSuccessful = this.model.createHotel(newHotelName);
         
         if(isCreationSuccessful) {
-            displayNewHotelSuccessful(newHotelName);
+            this.view.displayNewHotelSuccessful(newHotelName);
         } else {
-            displayNewHotelFailed();
+            this.view.displayNewHotelFailed();
         }
 
         this.view.displayLongDivider();
