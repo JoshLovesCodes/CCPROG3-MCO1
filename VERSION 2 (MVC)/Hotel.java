@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.naming.spi.ResolveResult;
 
 public class Hotel {
     private String name;
@@ -150,6 +151,32 @@ public class Hotel {
         return count;
     }
     
+    public boolean addReservation(Guest guest, Date checkIn, Date checkOut) {
+        int index = -1;
+
+        for(Room r : this.roomList) {
+            index = this.reservationList.indexOf(r);
+
+            if(index == -1) {
+                this.reservationList.add(new Reservation(guest, checkIn, checkOut, r));
+                return true;
+            }
+        }
+
+        for(Room r : this.roomList) {
+            index = this.reservationList.indexOf(r);
+
+            if(index != -1) {
+                if(!Date.isAfter(this.reservationList.get(index).getCheckInDate(), checkIn) && !Date.isAfter(this.reservationList.get(index).getCheckOutDate(), checkOut)) {
+                    this.reservationList.add(new Reservation(guest, checkIn, checkOut, r));
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public boolean removeReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
             if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) {
