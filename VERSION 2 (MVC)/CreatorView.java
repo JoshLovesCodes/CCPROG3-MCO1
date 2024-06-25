@@ -8,11 +8,11 @@ public class CreatorView {
         this.scanner = new Scanner(System.in);
     }
 
-    private void displayLongDivider() {
+    public void displayLongDivider() {
         System.out.println("==============================");
     }
 
-    private void displayShortDivider() {
+    public void displayShortDivider() {
         System.out.println("===============");
     }
 
@@ -30,9 +30,9 @@ public class CreatorView {
         System.out.println("Created '" + newHotelName +"' successfully!");
     }
 
-    public void displayNewHotelFailed(String newHotelName) {
+    public void displayNewHotelFailed() {
         displayShortDivider();
 
-        System.out.println("Creating hotel failed.");
+        System.out.println("Creating hotel failed. Enter a unique name.");
     }
 }

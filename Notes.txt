@@ -32,14 +32,19 @@ HRS (main controlller)
 
 
 
-CreatorView
+CreatorView                             //DONE
 - scanner : Scanner
 + CREATE : static final int
 
 + CreatorView()
++ displayLongDivider() : void
++ displayShortDivider() : void
++ promptHotelName() : String
++ displayNewHotelSuccessful() : void
++ displayNewHotelFailed() : void
 
 
-Creator (sub controller)
+Creator (sub controller)                //DONE
 - model : MainModel
 - view : CreatorView
 
