@@ -5,11 +5,7 @@ public class HotelViewerView {
     public static final int HIGH_LVL = 1, TOTAL_ROOM = 2, INFO_ROOM = 3, INFO_RESERVATION = 4, INFO_EXIT = 5;
 
     public HotelViewerView() {
-<<<<<<< HEAD
         this.scanner = new Scanner(System.in);
-=======
-
->>>>>>> 998d73b0a1993963a5db8cb8d0ea288cb127630e
     }
 
     public int promptInfoMenuResponse() {
@@ -25,6 +21,24 @@ public class HotelViewerView {
 
     public String promptHotelName() {
         System.out.println("What is the name of the hotel? ");
+
+        return this.scanner.nextLine();
+    }
+
+    public String promptLastName() {
+        System.out.println("Enter last name: ");
+
+        return this.scanner.next();
+    }
+
+    public String promptFirstName() {
+        System.out.println("Enter first name: ");
+
+        return this.scanner.next();
+    }
+
+    public String promptRoomName() {
+        System.out.println("What is the room name? ");
 
         return this.scanner.nextLine();
     }
@@ -47,7 +61,7 @@ public class HotelViewerView {
         return this.scanner.nextInt;
     }
 
-    public int promptRoomName() {
+    public String promptRoomName() {
         System.out.println("Enter Room Name: ");
 
         return this.scanner.nextLine;

@@ -54,7 +54,7 @@ Creator (sub controller)                //DONE
 
 
 
-HotelViewerView
+HotelViewerView                         //DONE
 - scanner : Scanner
 + HIGH_LVL : static final int
 + TOTAL_ROOM : static final int
