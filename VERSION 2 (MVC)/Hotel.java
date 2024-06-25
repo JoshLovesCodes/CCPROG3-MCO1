@@ -102,7 +102,7 @@ public class Hotel {
         return false;
     }
 
-    public boolean removeRoom() {
+    public int removeRoom() {
         int index = -1;
 
         for(Room room : this.roomList) {
@@ -110,11 +110,11 @@ public class Hotel {
             
             if(index == -1) {
                 this.roomList.remove(room);
-                return true;
+                return 1;
             }
         }
 
-        return false;
+        return 0;
     }
 
     public int removeRoom(int ctr) {
@@ -122,7 +122,7 @@ public class Hotel {
         int count = 0;
 
         for(int i = 0; i < ctr; i++)
-            if(removeRoom())
+            if(removeRoom() == 1)
                 count++;
             
         return count;

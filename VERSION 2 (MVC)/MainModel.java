@@ -52,6 +52,14 @@ public class MainModel {
         return hotel.addRoom(ctr);
     }
 
+    public int removeRoom(Hotel hotel) {
+        return hotel.removeRoom();
+    }
+
+    public int removeRoom(Hotel hotel, int ctr) {
+        return hotel.removeRoom(ctr);
+    }
+
 
     public boolean updateRoomPrice(Hotel hotel, double price) {
         if(hotel.getReservationList().size() == 0) {
