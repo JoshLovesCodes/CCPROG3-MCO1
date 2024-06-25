@@ -151,43 +151,48 @@ Hotel (Model)
     
 
 
-Reservation         //
+Reservation         // DONE
     Attributes
     - guest : Guest
     - checkInDate : Date
     - checkOutDate : Date
     - room : Room
+    - totalDays : int
+
 
     Methods
-    - getTotalPrice() : double
-    - getCostPerNight() : double
-    - getGuest() : Guest
-    - getCheckInDate() : Date
-    - getCheckOutDate() : Date
-    - getRoom : Room
+    + Reservation(guest : Guest, checkInDate : Date, checkOutDate : Date, room : Room)
+    + getTotalPrice(fees : Fees) : double
+    + getCostPerNight() : double
+    + getGuest() : Guest
+    + getCheckInDate() : Date
+    + getCheckOutDate() : Date
+    + getRoom : Room
 
-Room                //
+Room                // DONE
     Attributes
     - name : String
     - price : double = 1299.0
 
     Methods
-    - getName() : String
-    - getPrice() : double
-    - setPrice(double price) : boolean 
+    + Room(name:String)
+    + getName() : String
+    + getPrice() : double
+    + setPrice(price : double) : boolean 
 
-Guest               //
+Guest               //DONE
     Attributes
     - firstName : String
     - lastName : String
     - fullName : String
 
     Method
-    - getFirstName() : String
-    - getLastName() : String
-    - getFullName() : String
+    + Guest(firstName : String, lastName : String)
+    + getFirstName() : String
+    + getLastName() : String
+    + getFullName() : String
 
-Date                //
+Date                //DONE
     Attributes
     - year : int
     - month : int
@@ -196,17 +201,20 @@ Date                //
     - minute : int
 
     Methods
-    - getYear() : int
-    - getMonth() : int
-    - getDay() : int
-    - getHour() : int
-    - getMinute() : int
-    - setYear(newYear : int) : void
-    - setMonth(newMonth : int) : void
-    - setDay(newDay : int) : void
-    - setHour(newHour : int) : void
-    - setMinute(newMinute : int) : void
-    - compareDay(date1 : Date, date2 : Date) :  
+    + Date(year : int, month : int, day : int, hour : int, minute : int)
+    + Date(year : int, month : int, day : int)
+    + getYear() : int
+    + getMonth() : int
+    + getDay() : int
+    + getHour() : int
+    + getMinute() : int
+    + setYear(newYear : int) : void
+    + setMonth(newMonth : int) : void
+    + setDay(newDay : int) : void
+    + setHour(newHour : int) : void
+    + setMinute(newMinute : int) : void
+    + identifyMonth(month : int) : static String
+    + isAfter(toBeChecked : Date, toCompareTo : Date) : static Boolean 
 
 
 
