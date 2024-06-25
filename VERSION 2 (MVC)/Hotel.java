@@ -60,27 +60,24 @@ public class Hotel {
         return bookedRooms;
     }
 
-    // public boolean[] getRoomAvailability(Room room, int month) {
-    //     boolean[] bookedDates = new boolean[30];
+    private int getRoomAvailability(Room room, int month) {
+        int ctr = 0;
 
-    //     for(boolean day : bookedDates) {
-    //         day = false;
-    //     }
+        for (Reservation reservation : this.reservationList) {
+            if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
+                for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
+                    ctr++;
+                }
+            }
+        }
 
-    //     for (Reservation reservation : this.reservationList) {
-    //         if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
-    //             for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
-    //                 bookedDates[i] = true;
-    //             }
-    //         }
-    //     }
-
-    //     return bookedDates;
-    // }
+        return ctr;
+    }
 
 
-    public String getRoomInfo(String name) {
-        Room room;
+    public String getRoomInfo(String name, int month) {
+        Room room = null;
+        String info = "";
 
         for(int i = 0; i < roomList.size(); i++) {
             if(this.roomList.get(i).getName() == name) {
@@ -88,6 +85,14 @@ public class Hotel {
                 break;
             }
         }
+
+        if(room != null) {
+            info += "Name: " + room.getName() + '\n';
+            info += "Price per night: " + room.getPrice() + '\n';
+            info += "Availability: " + Integer.toString(getRoomAvailability(room, month));
+        }
+        
+        return info;
     }
 
 
