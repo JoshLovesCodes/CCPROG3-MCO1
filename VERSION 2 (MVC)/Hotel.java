@@ -91,7 +91,7 @@ public class Hotel {
         Arrays.fill(bookedDates, false);
 
         for (Reservation reservation : this.reservationList) {
-            if(reservation.getRoom() == room && reservation.getCheckInDate().getMonth() == month) {
+            if(reservation.getRoom().equals(room) && reservation.getCheckInDate().getMonth() == month) {
                 for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
                     bookedDates[i] = true;
                 }
