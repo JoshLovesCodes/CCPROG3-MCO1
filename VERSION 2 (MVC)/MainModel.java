@@ -8,7 +8,7 @@ public class MainModel {
         this.hotelList = new ArrayList<Hotel>();
     }
 
-
+    
     public boolean nameChecker(String name) {
         for(Hotel h: this.hotelList) {
             if(h.getName() == name) {
@@ -31,10 +31,9 @@ public class MainModel {
     }
 
     public Hotel selectHotel(String name) {
-        for(int i = 0; i < this.hotelList.size(); i++) {
-            if(this.hotelList.get(i).getName() == name) {
-                return this.hotelList.get(i);
-            }
+        for(Hotel h : this.hotelList) {
+            if(h.getName() == name)
+                return h;
         }
 
         return null;

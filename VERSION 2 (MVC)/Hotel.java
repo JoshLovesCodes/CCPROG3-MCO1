@@ -32,6 +32,15 @@ public class Hotel {
         return this.maximumRooms;
     }
 
+    public Room getRoom(String name) {
+        for(Room r : this.roomList) {
+            if(r.getName() == name)
+                return r;
+        }
+        
+        return null;
+    }
+
     public double getEarnings() {
         double totalEarnings = 0;
         for (Reservation reservation : this.reservationList) {
