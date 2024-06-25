@@ -36,5 +36,4 @@ public class BookerView {
     public void displayReservationFailed() {
         System.out.println("Hotel is fully booked please select a different date");
     }
-    
 }
