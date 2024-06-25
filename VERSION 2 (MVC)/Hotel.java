@@ -43,7 +43,7 @@ public class Hotel {
 
     public Reservation getReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
-            if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) {
+            if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) 
                 return reservation;
         }
 
