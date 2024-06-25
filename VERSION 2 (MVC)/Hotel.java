@@ -86,20 +86,26 @@ public class Hotel {
         this.roomList.add(new Room(this.automateNaming.getName()));
     }
 
-    public void removeRoom(String name) {
+    public boolean removeRoom(String name) {
         for(Room room : this.roomList) {
             if(room.getName() == name) {
                 this.automateNaming.setAvailability(name);
                 this.roomList.remove(room);
+                return true;
             }
         }
-    }
 
-    public void removeReservation(String fullName) {
+        return false;
+    }
+    
+    public boolean removeReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
-            if(reservation.getGuest().getFullName() == fullName) {
+            if(reservation.getGuest().getFirstName() == firstName && reservation.getGuest().getLastName() == lastName) {
                 this.reservationList.remove(reservation);
+                return true;
             }
         }
+
+        return false;
     }
 }
