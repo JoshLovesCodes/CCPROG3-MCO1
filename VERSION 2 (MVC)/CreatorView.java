@@ -7,11 +7,11 @@ public class CreatorView {
         this.scanner = new Scanner(System.in);
     }
 
-    public void displayLongDivider() {
-        System.out.println("==============================");
+    public static final void displayLongDivider() {
+        System.out.println("==============================\n");
     }
 
-    public void displayShortDivider() {
+    public static final void displayShortDivider() {
         System.out.println("===============");
     }
 
