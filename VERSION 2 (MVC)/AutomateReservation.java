@@ -14,7 +14,7 @@ public class AutomateReservation {
 
         for(Room r : this.roomList) {   
             for(Reservation reservation : this.reservationList) {
-                if(reservation.getRoom() == r) {
+                if(reservation.getRoom().equals(r)) {
                     found = true;
                     break;
                 }
@@ -26,7 +26,7 @@ public class AutomateReservation {
 
         for(Room r : this.roomList) {
             for(Reservation reservation : this.reservationList) {
-                if(reservation.getRoom() == r) {
+                if(reservation.getRoom().equals(r)) {
                     if(!Date.isAfter(reservation.getCheckInDate(), checkIn) && !Date.isAfter(reservation.getCheckOutDate(), checkOut)) 
                         return new Reservation(guest, checkIn, checkOut, r);
                 }
