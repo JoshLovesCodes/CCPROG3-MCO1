@@ -62,6 +62,19 @@ HotelViewerView                         //DONE
 + INFO_RESERVATION : static final int
 
 + HotelViewerView()
++ promptInfoMenuResponse() : int
++ promptHotelName() : String
++ promptLastName() : String
++ promptFirstName() : String
++ promptMonth() : int
++ promptDay() : int
++ promptYear() : int
++ promptRoomName() : String
++ displayHighLevelInfo(hotel : Hotel) : void
++ displayRoomAvailability(date : Date, freeRooms : int, bookedRooms : int) : void
++ displayRoomInformation(room : Room, roomAvailability : boolean[], month : String) : void
++ displayReservationInfo(reservation : Reservation) : void
+
 
 HotelViewer (sub controller)
 - model : MainModel
