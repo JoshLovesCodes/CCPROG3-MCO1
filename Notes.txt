@@ -129,25 +129,32 @@ Booker (sub controller)
 
 
 Hotel (Model)
-    Attributes                                          //
+    Attributes                                          
     - name : String                             
     - roomList : ArrayList<Room>                    
     - reservationList : ArrayList<Reservation>  
-    - maximumRooms : int = 50                   
+    - maximumRooms : int = 50
+    - automateNaming : automateNaming
+    - automateReservation : automateReservation                   
 
-    Methods                                             //
-    - getName : String                                 
-    - getRoomList : ArrayList<Room>                    
-    - getReservationList : ArrayList<Reservation>       
-    - getMaximumRooms : int                            
-    - getEarnings : double                              
-    - getAvailableRooms(Date) : int                     
-    - getBookedRooms(Date) : int                        
-    - getRoomAvailability(Room room, int month) : boolean[] 
-    - setName(String name) : void
-    - addRoom(String name) : void
-    - removeRoom(String name) : void
-    - removeReservation(Guest guest) : void
+    Methods
+    + Hotel(name : String)                                             
+    + getName() : String                                 
+    + getRoomList() : ArrayList<Room>                    
+    + getReservationList() : ArrayList<Reservation>       
+    + getMaximumRooms() : int
+    + getRoom(name : String) : Room                            
+    + getReservation(firstName : String, lastName : String) : Reservation                          
+    + getEarnings : double                              
+    + getAvailableRooms(date : Date) : int                     
+    + getBookedRooms(date : Date) : int                        
+    + getRoomAvailability(room : Room, month : int) : boolean[] 
+    + setName(String name) : void
+    + addRoom() : boolean
+    + addRoom(ctr : int) : boolean
+    + removeRoom() : void
+    + removeRoom() : void
+    + removeReservation(Guest guest) : void
     
 
 
