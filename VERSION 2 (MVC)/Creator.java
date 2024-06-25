@@ -17,5 +17,7 @@ public class Creator {
         } else {
             displayNewHotelFailed();
         }
+
+        this.view.displayLongDivider();
     }
 }
