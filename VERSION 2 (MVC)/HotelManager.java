@@ -37,6 +37,8 @@ public class HotelManager {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
+
+                
                         case HotelManagerView.ADD_ROOM:
                             HotelViewerView.displayLongDivider();
                             char responseAR = this.view.promptAddingRoom();
@@ -85,6 +87,9 @@ public class HotelManager {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
+
+
+
                         case HotelManagerView.REMOVE_ROOM:
                             HotelViewerView.displayLongDivider();
                             char responseRR = this.view.promptRemovingRoom();
@@ -134,6 +139,10 @@ public class HotelManager {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
+
+
+
+
                         case HotelManagerView.UPDATE_PRICE:
                             HotelViewerView.displayLongDivider();
                             double newPrice = this.view.promptNewPrice();
@@ -161,6 +170,9 @@ public class HotelManager {
                                     break;
                                 }
                             }
+
+
+
                         case HotelManagerView.REMOVE_RESERVATION:
                             String firstName = this.view.promptFirstName();
                             String lastName = this.view.promptLastName();
@@ -184,6 +196,9 @@ public class HotelManager {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
+
+
+
                         case HotelManagerView.REMOVE_HOTEL:
                             char confirmationRH;
                             this.view.displayRemoveHotelInfo();
@@ -205,13 +220,19 @@ public class HotelManager {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
+
+
+
                         case HotelManagerView.MANAGER_EXIT:
                             input = 7;
                             break;
                         default:
                             System.out.print("INVALID INPUT PLEASE TRY AGAIN\n");
-                    }
-                } while(input != 7);
-            }
+                        }
+                    } while(input != 7);
+                }
+        else {
+            System.out.print("HOTEL NOT FOUND\n");
         }
     }
+}
