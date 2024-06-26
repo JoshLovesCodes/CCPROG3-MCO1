@@ -15,7 +15,7 @@ public class HRS {
         this.booker = new Booker(this.model);
     }   
     
-    public void run() {
+    public void displayInterface() {
         int input;
         HotelViewerView.displayLongDivider();
         this.view.displayWelcomeMessage();
