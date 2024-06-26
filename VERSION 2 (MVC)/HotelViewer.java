@@ -1,14 +1,24 @@
+/**
+ * Controller class responsible for viewing the hotel.
+ */
 import java.util.ArrayList;
 
 public class HotelViewer {
     private MainModel model;
     private HotelViewerView view;
 
+/**
+ * Constructs the HotelViewer class with a model class
+ * @param model the model class for this controller class
+ */
     public HotelViewer(MainModel model) {
         this.model = model;
         this.view = new HotelViewerView();
     }
 
+/**
+ * Displays the interface of viewing a hotel.
+ */
     public void displayInterface() {
         int input;
         HotelViewerView.displayLongDivider();

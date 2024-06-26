@@ -1,12 +1,23 @@
+/**
+ * Controller class responsible for simulating a booking.
+ */
+
 public class Booker {
     private MainModel model;
     private BookerView view;
 
+/**
+ * Constructs the Booker class with a model class
+ * @param model the model class for this controller class
+ */
     public Booker(MainModel model) {
         this.model = model;
         this.view = new BookerView();
     }
 
+/**
+ * Displays the interface of booking simulation
+ */
     public void displayInterface() {
 
         String hotelName = this.view.promptHotelName();

@@ -1,12 +1,22 @@
+/**
+ * Controller class responsible for managing the hotel.
+ */
 public class HotelManager {
     private MainModel model;
     public HotelManagerView view;
 
+/**
+ * Constructs the HotelManager class with a model class
+ * @param model the model class for this controller class
+ */
     public HotelManager(MainModel model) {
         this.model = model;
         this.view = new HotelManagerView();
     }
 
+/**
+ * Displays the interface of managing a hotel.
+ */
     public void displayInterface() {
         int input;
         Hotel hotel = this.model.selectHotel(this.view.promptHotelName());

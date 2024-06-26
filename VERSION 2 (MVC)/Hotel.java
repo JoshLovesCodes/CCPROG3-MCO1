@@ -1,5 +1,10 @@
+/**
+ * Represents the hotel in the system
+ */
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class Hotel {
     private String name;
@@ -9,6 +14,10 @@ public class Hotel {
     private AutomateNaming automateNaming;
     private AutomateReservation automateReservation;
 
+/**
+ * Constructs the Hotel class with a given name
+ * @param name the name of the hotel
+ */
     public Hotel(String name){
         this.name = name;
         this.roomList = new ArrayList<Room>();
@@ -20,8 +29,9 @@ public class Hotel {
     }
 
     
-    /** 
-     * @return String
+    /**
+     * Gets the name of the hotel 
+     * @return the name of the hotel
      */
     public String getName() {
         return this.name;
@@ -29,7 +39,8 @@ public class Hotel {
     
     
     /** 
-     * @return ArrayList<Room>
+     * Gets the list of rooms in the hotel
+     * @return the list of rooms
      */
     public ArrayList<Room> getRoomList() {
         return this.roomList;
@@ -37,24 +48,27 @@ public class Hotel {
 
     
     /** 
-     * @return ArrayList<Reservation>
+     * Gets the list of reservations in the hotel
+     * @return list of reservations
      */
     public ArrayList<Reservation> getReservationList() {
         return this.reservationList;
     }
 
     
-    /** 
-     * @return int
+    /**
+     * Gets the maximum number of rooms in the hotel 
+     * @return the maximum number of rooms
      */
     public int getMaximumRooms() {
         return this.maximumRooms;
     }
 
     
-    /** 
-     * @param name
-     * @return Room
+    /**
+     * Gets the room based on its name 
+     * @param name the name of the room
+     * @return the room or null if the room doesn't exist
      */
     public Room getRoom(String name) {
         for(Room r : this.roomList) {
@@ -66,10 +80,11 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param firstName
-     * @param lastName
-     * @return ArrayList<Reservation>
+    /**
+     * Gets the reservation(s) based on first name and last name of the guest 
+     * @param firstName first name of the guest
+     * @param lastName last name of the guest
+     * @return the reservation(s) or null if the reservations doesn't exist
      */
     public ArrayList<Reservation> getReservation(String firstName, String lastName) {
         ArrayList<Reservation> newReservationList = new ArrayList<Reservation>();
@@ -85,8 +100,9 @@ public class Hotel {
     }
 
     
-    /** 
-     * @return double
+    /**
+     * Gets the earning of the hotel 
+     * @return the earnings of the hotel
      */
     public double getEarnings() {
         double totalEarnings = 0;
@@ -98,9 +114,10 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param date
-     * @return int
+    /**
+     * Gets the number of available rooms in a hotel 
+     * @param date the date to check the number of available rooms
+     * @return number of available rooms in a given day
      */
     public int getAvailableRooms(Date date) {
         int freeRooms = this.roomList.size();
@@ -115,8 +132,9 @@ public class Hotel {
 
     
     /** 
-     * @param date
-     * @return int
+     * Gets the number of booked rooms in a hotel 
+     * @param date the date to check the number of booked rooms
+     * @return number of booked rooms in a given day
      */
     public int getBookedRooms(Date date) {
         int bookedRooms = 0;
@@ -130,9 +148,10 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param room
-     * @return boolean[]
+    /**
+     * Gets the availability of the room for the whole month 
+     * @param room the room to be checked its availability
+     * @return the boolean list where the room is available or not
      */
     public boolean[] getRoomAvailability(Room room) {
         boolean[] bookedDates = new boolean[31];
@@ -151,16 +170,18 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param name
+    /**
+     * Sets the name of the hotel 
+     * @param name the new name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     
-    /** 
-     * @return boolean
+    /**
+     * Adds a single room to the hotel 
+     * @return true if successful, false if not
      */
     public boolean addRoom() {
         if(this.roomList.size() < this.maximumRooms) {
@@ -172,9 +193,10 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param ctr
-     * @return boolean
+    /**
+     * Adds multiple rooms to the hotel 
+     * @param ctr the number of rooms to be added
+     * @return true if successful, false if not 
      */
     public boolean addRoom(int ctr) {
         if(this.roomList.size() + ctr <= this.maximumRooms) {
@@ -188,13 +210,15 @@ public class Hotel {
     }
 
     
-    /** 
-     * @return int
+    /**
+     * Removes a single room 
+     * @return 1 if success, 0 if not
      */
     public int removeRoom() {
 
         boolean found;
 
+        for(Room room : this.roomList) {
         if(this.roomList.size() != 1) {
             for(Room room : this.roomList) {
 
@@ -219,11 +243,14 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param ctr
-     * @return int
+    /**
+     * Removes multiple room 
+     * @param ctr number of rooms to be removed
+     * @return the number of rooms removed
      */
     public int removeRoom(int ctr) {
+
+        if(return )
 
         int count = 0;
 
@@ -235,11 +262,12 @@ public class Hotel {
     }
     
     
-    /** 
-     * @param guest
-     * @param checkIn
-     * @param checkOut
-     * @return boolean
+    /**
+     * Adds a resevation 
+     * @param guest the guest
+     * @param checkIn the check-in date of the reservation
+     * @param checkOut the check-out date of ther reservation
+     * @return true if successful, false if not
      */
     public boolean addReservation(Guest guest, Date checkIn, Date checkOut) {
         Reservation reservation = this.automateReservation.getReservation(guest, checkIn, checkOut);
@@ -253,10 +281,11 @@ public class Hotel {
     }
 
     
-    /** 
-     * @param firstName
-     * @param lastName
-     * @return boolean
+    /**
+     * Removed a reservation based on name of the guest 
+     * @param firstName the firstname of the guest
+     * @param lastName the last name of the guest
+     * @return true if successful, false if not
      */
     public boolean removeReservation(String firstName, String lastName) {
 

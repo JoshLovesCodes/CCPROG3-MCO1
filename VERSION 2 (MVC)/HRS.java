@@ -1,3 +1,6 @@
+/**
+ * Class responsible for the whole reservation system.
+ */
 public class HRS {
     private MainModel model;
     private HRSview view;
@@ -6,6 +9,9 @@ public class HRS {
     private HotelManager manager;
     private Booker booker;
 
+/**
+ * Constructs the HRS class
+ */
     public HRS() {
         this.model = new MainModel();
         this.view = new HRSview();
@@ -14,7 +20,10 @@ public class HRS {
         this.manager = new HotelManager(this.model);
         this.booker = new Booker(this.model);
     }   
-    
+
+/**
+ * Displays the interface of the system
+ */
     public void displayInterface() {
         int input;
         HotelViewerView.displayLongDivider();
