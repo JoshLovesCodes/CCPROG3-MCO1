@@ -195,21 +195,23 @@ public class Hotel {
 
         boolean found;
 
-        for(Room room : this.roomList) {
+        if(this.roomList.size() != 1) {
+            for(Room room : this.roomList) {
 
-            found = false;
+                found = false;
 
-            for(Reservation reservation : this.reservationList) {
-                if(room.equals(reservation.getRoom())) {
-                    found = true;
-                    break;
+                for(Reservation reservation : this.reservationList) {
+                    if(room.equals(reservation.getRoom())) {
+                        found = true;
+                        break;
+                    }
                 }
-            }
 
-            if(!found) {
-                this.automateNaming.setAvailability(room.getName());
-                this.roomList.remove(room);
-                return 1;
+                if(!found) {
+                    this.automateNaming.setAvailability(room.getName());
+                    this.roomList.remove(room);
+                    return 1;
+                }
             }
         }
 
