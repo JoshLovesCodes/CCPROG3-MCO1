@@ -15,10 +15,10 @@ public class HRS {
         this.booker = new Booker(this.model);
     }   
     
-    public void displayInterface() {
+    public void run() {
         int input;
         HotelViewerView.displayLongDivider();
-        this.view.displaywelcomeMessage();
+        this.view.displayWelcomeMessage();
         do {
             input = this.view.promptInfoMenuResponse();
 
@@ -37,6 +37,7 @@ public class HRS {
                     break;
                 case HRSview.EXIT :
                     input = 5;
+                    break;
                 default: 
                     System.out.print("INVALID INPUT PLEASE TRY AGAIN");
             }

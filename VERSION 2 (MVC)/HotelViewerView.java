@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class HotelViewerView {
     private Scanner scanner;
@@ -9,7 +10,7 @@ public class HotelViewerView {
     }
 
     public static final void displayLongDivider() {
-        System.out.println("==============================\n");
+        System.out.println("==============================");
     }
 
     public static final void displayShortDivider() {
@@ -17,7 +18,7 @@ public class HotelViewerView {
     }
     
     public int promptInfoMenuResponse() {
-        System.out.println("What information do you want to see?");
+        System.out.println("\nWhat information do you want to see?");
         System.out.println("1) Basic Information");
         System.out.println("2) Total Number of Rooms");
         System.out.println("3) Room Information");
@@ -66,31 +67,33 @@ public class HotelViewerView {
     public String promptRoomName() {
         System.out.println("Enter Room Name: ");
 
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     public void displayHighLevelInfo(Hotel hotel) {
+        HotelViewerView.displayLongDivider();
         System.out.println("Name: " + hotel.getName());
         System.out.println("Total number of rooms: " + hotel.getRoomList().size());
         System.out.println("Estimated earnings for the month: " + hotel.getEarnings());
     }
 
     public void displayRoomAvailability(Date date, int freeRooms, int bookedRooms) {
-        String info = "Availability of Rooms for" + date.getMonth() + "/" + date.getDay() + "/" + date.getYear() + ": ";
+        HotelViewerView.displayLongDivider();
+        String info = "Availability of Rooms for Day" + date.getDay() + ": ";
         System.out.println(info);
         System.out.println("Available: " + freeRooms);
         System.out.println("Booked: " + bookedRooms);
     }
 
-    public void displayRoomInformation(Room room, boolean[] roomAvailability, String month) {
+    public void displayRoomInformation(Room room, boolean[] roomAvailability) {
         System.out.println("Room name: " + room.getName());
         System.out.println("Price per night: " + room.getPrice());
-        System.out.println("Availability for the month of " + month + ": ");
+        System.out.println("Availability for the whole month: ");
 
         int i, day;
         for(i = 0; i < 31; i++) {
             day = i+1;
-            if(day % 7 == 0) {
+            if(day % 8 == 0) {
                 System.out.println("\n");
             }
 
@@ -103,17 +106,30 @@ public class HotelViewerView {
         }
     }
 
-    public void displayReservationInfo(Reservation reservation) {
-        System.out.println("Guest Name: " + reservation.getGuest().getFullName());
-        System.out.println("Room Name: " + reservation.getRoom().getName());
-        System.out.println("Room Price: " + reservation.getRoom().getPrice());
-        System.out.println("Check-In Date: " + reservation.getCheckInDate().getMonth() + "/" + reservation.getCheckInDate().getDay() + "/" + reservation.getCheckInDate().getYear());
-        System.out.println("Check-In Date: " + reservation.getCheckOutDate().getMonth() + "/" + reservation.getCheckOutDate().getDay() + "/" + reservation.getCheckOutDate().getYear());
-        System.out.println("Reservation Cost: " + reservation.getTotalPrice());
-        System.out.println("Breakdown Cost Per Night: " + reservation.getCostPerNight());
+    public void displayReservationInfo(ArrayList<Reservation> reservationList, Fees fees) {
+        for (Reservation r: reservationList) {
+            HotelViewerView.displayShortDivider();
+            System.out.println("Guest Name: " + r.getGuest().getFullName());
+            System.out.println("Room Name: " + r.getRoom().getName());
+            System.out.println("Room Price: " + r.getRoom().getPrice());
+            System.out.println("Check-In Day: " + r.getCheckInDate().getDay());
+            System.out.println("Check-In Day: " + r.getCheckOutDate().getDay());
+            System.out.println("Reservation Cost: " + r.getTotalPrice(fees));
+            System.out.println("Breakdown Cost Per Night: " + r.getCostPerNight(fees));
+            HotelViewerView.displayShortDivider();
+        }
+        
     }
 
     public void displayHotelNotFound() {
         System.out.println("Hotel does not exist");
+    }    
+
+    public void displayRoomNotFound() {
+        System.out.println("Room does not exist");
+    }   
+
+    public void displayReservationNotFound() {
+        System.out.println("Reservation does not exist");
     }    
 }

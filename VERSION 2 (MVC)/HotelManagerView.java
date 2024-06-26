@@ -24,25 +24,25 @@ public class HotelManagerView {
     public String promptHotelName() {
         System.out.println("Enter name of the hotel: ");
 
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     public String promptNewHotelName() {
         System.out.println("Enter NEW name of the hotel: ");
 
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     public char promptConfirmation() {
         System.out.println("Do you want to continue? (Y-yes / N-no)");
 
-        return this.scanner.nextChar();
+        return this.scanner.next().charAt(0);
     }
 
     public char promptAddingRoom() {
         System.out.println("Do you want to add single(S) or multiple(M) rooms? ");
 
-        return this.scanner.nextChar();
+        return this.scanner.next().charAt(0);
     }
 
     public int promptNumberOfRooms() {
@@ -54,7 +54,7 @@ public class HotelManagerView {
     public char promptRemovingRoom() {
         System.out.println("Do you want to remove single(S) or multiple(M) rooms? ");
 
-        return this.scanner.nextChar();
+        return this.scanner.next().charAt(0);
     }
 
     public int promptRemoveNumberOfRooms() {
@@ -72,18 +72,18 @@ public class HotelManagerView {
     public String promptFirstName() {
         System.out.println("Enter first name of guest: ");
 
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     public String promptLastName() {
         System.out.println("Enter last name of guest: ");
 
-        return this.scanner.nextLine();
+        return this.scanner.next();
     }
 
     public void displayChangeNameInfo(String oldName, String newName) {
-        System.out.pritln("Current Name: " + oldName);
-        System.out.pritln("Will be changed to: " + newName);
+        System.out.println("Current Name: " + oldName);
+        System.out.println("Will be changed to: " + newName);
     }
 
     public void displayChangeNameSuccess() {
@@ -135,7 +135,7 @@ public class HotelManagerView {
     }
 
     public void displayRemoveMultipleRoomSuccess(int size) {
-        System.out.println(size + " rooms successfully added.");
+        System.out.println(size + " rooms successfully removed.");
     }
 
     public void displayRemoveMultipleRoomFailed() {
@@ -181,6 +181,10 @@ public class HotelManagerView {
 
     public void displayRemoveHotelFailed() {
         System.out.println("Removing hotel failed.");
+    }
+
+    public void displayInvalidInput() {
+        System.out.println("Invalid input try again.");
     }
 
 

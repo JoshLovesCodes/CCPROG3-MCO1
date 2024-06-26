@@ -12,11 +12,11 @@ public class MainModel {
     public boolean nameChecker(String name) {
         for(Hotel h: this.hotelList) {
             if(h.getName().equals(name)) {
-                return true;
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 
     public boolean createHotel(String newHotelName) {
@@ -40,11 +40,11 @@ public class MainModel {
     }
 
     public boolean changeHotelName(Hotel hotel, String name) {
-        if(nameChecker(name))
-            return false;
-
-        hotel.setName(name);
-        return true;
+        if(nameChecker(name)) {
+            hotel.setName(name);
+            return true;
+        }
+        return false;
     }
 
     public boolean updateRoomPrice(Hotel hotel, double price) {

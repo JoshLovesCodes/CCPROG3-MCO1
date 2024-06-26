@@ -13,14 +13,11 @@ public class Reservation {
     }
 
     public double getTotalPrice(Fees fees) {
-        if(this.totalDays == 0)
-            return this.room.getPrice() + fees.getTotalFees();
-        else 
-            return this.room.getPrice() * this.totalDays + fees.getTotalFees();
+        return this.room.getPrice() * this.totalDays + fees.getTotalFees();
     }
 
-    public double getCostPerNight() {
-        return this.getTotalPrice() / this.totalDays;
+    public double getCostPerNight(Fees fees) {
+        return this.getTotalPrice(fees) / this.totalDays;
     }
 
     public Guest getGuest() {

@@ -12,21 +12,19 @@ public class HotelManager {
         Hotel hotel = this.model.selectHotel(this.view.promptHotelName());
 
         if(hotel != null) {
-
-            switch(input) {
                 do {
                     input = this.view.promptInfoMenuResponse();
 
                     switch(input){
                         case HotelManagerView.CHANGE_NAME:
                             HotelViewerView.displayLongDivider();
-                            String newName = this.view.promptHotelNewName();
-                            this.view.displayChangeNameInfo();
+                            String newName = this.view.promptNewHotelName();
+                            this.view.displayChangeNameInfo(hotel.getName(), newName);
                             HotelViewerView.displayShortDivider();
-                            char confirmation = this.view.promptConfirmation();
-                            if(confirmation == 'Y' || confirmation == 'y') {
-                                boolean status = this.model.changeHotelName(hotel, name);
-                                if(status) {
+                            char confirmationCN = this.view.promptConfirmation();
+                            if(confirmationCN == 'Y' || confirmationCN == 'y') {
+                                boolean statusCN = this.model.changeHotelName(hotel, newName);
+                                if(statusCN) {
                                     this.view.displayChangeNameSuccess();
                                     HotelViewerView.displayLongDivider();
                                     break;
@@ -35,19 +33,19 @@ public class HotelManager {
                                     HotelViewerView.displayLongDivider();
                                     break;
                                 }
-                            } else if(confirmation == 'N' || confirmation == 'n') {
+                            } else if(confirmationCN == 'N' || confirmationCN == 'n') {
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
                         case HotelManagerView.ADD_ROOM:
                             HotelViewerView.displayLongDivider();
-                            char response = this.view.promptAddingRoom();
-                            char confirmation;
-                            if(response == 'S' || response == 's') {
+                            char responseAR = this.view.promptAddingRoom();
+                            char confirmationAdd;
+                            if(responseAR == 'S' || responseAR == 's') {
                                 this.view.displayAddSingleRoom();
                                 HotelViewerView.displayShortDivider();
-                                confirmation = this.view.promptConfirmation();
-                                if(confirmation == 'Y' || confirmation == 'y') {
+                                confirmationAdd = this.view.promptConfirmation();
+                                if(confirmationAdd == 'Y' || confirmationAdd == 'y') {
                                     boolean status = hotel.addRoom();
                                     if(status) {
                                         this.view.displayAddRoomSuccess();
@@ -58,16 +56,16 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                                } else if(confirmation == 'N' || confirmation == 'n'){
+                                } else if(confirmationAdd == 'N' || confirmationAdd == 'n'){
                                     HotelViewerView.displayLongDivider();
                                     break;
                                 }
-                            } else if(response == 'M' || response == 'm') {
-                                int size = promptNumberOfRooms();
+                            } else if(responseAR == 'M' || responseAR == 'm') {
+                                int size = this.view.promptNumberOfRooms();
                                 this.view.displayAddMultipleRoom(size);
                                 HotelViewerView.displayShortDivider();
-                                confirmation = this.view.promptConfirmation();
-                                if(confirmation == 'Y' || confirmation == 'y') {
+                                confirmationAdd = this.view.promptConfirmation();
+                                if(confirmationAdd == 'Y' || confirmationAdd == 'y') {
                                     boolean status = hotel.addRoom(size);
                                     if(status) {
                                         this.view.displayAddMultipleRoomSuccess(size);
@@ -78,22 +76,27 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                                } else if(confirmation == 'N' || confirmation == 'n'){
+                                } else if(confirmationAdd == 'N' || confirmationAdd == 'n'){
                                     HotelViewerView.displayLongDivider();
                                     break;
-                                }
+                                } 
+                            } else {
+                                this.view.displayInvalidInput();
+                                HotelViewerView.displayLongDivider();
+                                break;
                             }
                         case HotelManagerView.REMOVE_ROOM:
                             HotelViewerView.displayLongDivider();
-                            char response = this.view.promptRemovingRoom();
-                            char confirmation;
-                            if(response == 'S' || response == 's') {
+                            char responseRR = this.view.promptRemovingRoom();
+                            char confirmationRR, confirmationRRM;
+                            int statusRR;
+                            if(responseRR == 'S' || responseRR == 's') {
                                 this.view.displayRemoveSingleRoom();
                                 HotelViewerView.displayShortDivider();
-                                confirmation = this.view.promptConfirmation();
-                                if(confirmation == 'Y' || confirmation == 'y') {
-                                    boolean status = hotel.removeRoom();
-                                    if(status) {
+                                confirmationRR = this.view.promptConfirmation();
+                                if(confirmationRR == 'Y' || confirmationRR == 'y') {
+                                    statusRR = hotel.removeRoom();
+                                    if(statusRR == 1) {
                                         this.view.displayRemoveRoomSuccess();
                                         HotelViewerView.displayLongDivider();
                                         break;
@@ -102,18 +105,18 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                                } else if(confirmation == 'N' || confirmation == 'n'){
+                                } else if(confirmationRR == 'N' || confirmationRR == 'n'){
                                     HotelViewerView.displayLongDivider();
                                     break;
                                 }
-                            } else if(response == 'M' || response == 'm') {
-                                int size = promptRemoveNumberOfRooms();
+                            } else if(responseRR == 'M' || responseRR == 'm') {
+                                int size = this.view.promptRemoveNumberOfRooms();
                                 this.view.displayRemoveMultipleRoom(size);
                                 HotelViewerView.displayShortDivider();
-                                confirmation = this.view.promptConfirmation();
-                                if(confirmation == 'Y' || confirmation == 'y') {
-                                    boolean status = hotel.removeRoom(size);
-                                    if(status) {
+                                confirmationRRM = this.view.promptConfirmation();
+                                if(confirmationRRM == 'Y' || confirmationRRM == 'y') {
+                                    int statusRRM = hotel.removeRoom(size);
+                                    if(statusRRM == size) {
                                         this.view.displayRemoveMultipleRoomSuccess(size);
                                         HotelViewerView.displayLongDivider();
                                         break;
@@ -122,25 +125,29 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                                } else if(confirmation == 'N' || confirmation == 'n'){
+                                } else if(confirmationRRM == 'N' || confirmationRRM == 'n'){
                                     HotelViewerView.displayLongDivider();
                                     break;
                                 }
+                            } else {
+                                this.view.displayInvalidInput();
+                                HotelViewerView.displayLongDivider();
+                                break;
                             }
                         case HotelManagerView.UPDATE_PRICE:
                             HotelViewerView.displayLongDivider();
-                            int newPrice = this.view.promptNewPrice();
-                            char confirmation;
+                            double newPrice = this.view.promptNewPrice();
+                            char confirmationUP;
                             if(newPrice < 100.0){
                                 this.view.displayPromptPriceInvalid();
                                 break;
                             } else {
-                                this.view.displayUpdatePriceInfo();
+                                this.view.displayUpdatePriceInfo(hotel.getRoomList().get(0).getPrice(), newPrice);
                                 HotelViewerView.displayShortDivider();
-                                confirmation = this.view.promptConfirmation();
-                                if(confirmation == 'Y' || confirmation == 'y') {
-                                    boolean status = this.model.updateRoomPrice(hotel, newPrice);
-                                    if(status) {
+                                confirmationUP = this.view.promptConfirmation();
+                                if(confirmationUP == 'Y' || confirmationUP == 'y') {
+                                    boolean statusUP = this.model.updateRoomPrice(hotel, newPrice);
+                                    if(statusUP) {
                                         this.view.displayUpdatePriceSuccess();
                                         HotelViewerView.displayLongDivider();
                                         break;
@@ -149,7 +156,7 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                                } else if(confirmation == 'N' || confirmation == 'n'){
+                                } else if(confirmationUP == 'N' || confirmationUP == 'n'){
                                     HotelViewerView.displayLongDivider();
                                     break;
                                 }
@@ -157,14 +164,14 @@ public class HotelManager {
                         case HotelManagerView.REMOVE_RESERVATION:
                             String firstName = this.view.promptFirstName();
                             String lastName = this.view.promptLastName();
-                            char confirmation;
+                            char confirmationRS;
 
-                            this.view.displayRemoveReservationInfo();
+                            this.view.displayRemoveReservationInfo(firstName, lastName);
                             HotelViewerView.displayShortDivider();
-                            confirmation = this.view.promptConfirmation();
-                            if(confirmation == 'Y' || confirmation == 'y') {
-                                boolean status = hotel.removeReservation(firstName, lastName);
-                                    if(status) {
+                            confirmationRS = this.view.promptConfirmation();
+                            if(confirmationRS == 'Y' || confirmationRS == 'y') {
+                                boolean statusRS = hotel.removeReservation(firstName, lastName);
+                                    if(statusRS) {
                                         this.view.displayRemoveReservationSuccess();
                                         HotelViewerView.displayLongDivider();
                                         break;
@@ -173,37 +180,38 @@ public class HotelManager {
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                            } else if(confirmation == 'N' || confirmation == 'n'){
+                            } else if(confirmationRS == 'N' || confirmationRS == 'n'){
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
                         case HotelManagerView.REMOVE_HOTEL:
-                            char confirmation;
+                            char confirmationRH;
                             this.view.displayRemoveHotelInfo();
                             HotelViewerView.displayShortDivider();
-                            confirmation = this.view.promptConfirmation();
-                            if(confirmation == 'Y' || confirmation == 'y') {
-                                boolean status = this.model.removeHotel(hotel);
-                                    if(status) {
+                            confirmationRH = this.view.promptConfirmation();
+                            if(confirmationRH == 'Y' || confirmationRH == 'y') {
+                                boolean statusRH = this.model.removeHotel(hotel);
+                                    if(statusRH) {
                                         this.view.displayRemoveHotelSuccess();
                                         HotelViewerView.displayLongDivider();
+                                        input = 7;
                                         break;
                                     } else {
                                         this.view.displayRemoveHotelFailed();
                                         HotelViewerView.displayLongDivider();
                                         break;
                                     }
-                            } else if(confirmation == 'N' || confirmation == 'n'){
+                            } else if(confirmationRH == 'N' || confirmationRH == 'n'){
                                 HotelViewerView.displayLongDivider();
                                 break;
                             }
                         case HotelManagerView.MANAGER_EXIT:
                             input = 7;
+                            break;
                         default:
-                            System.out.print("INVALID INPUT PLEASE TRY AGAIN");
+                            System.out.print("INVALID INPUT PLEASE TRY AGAIN\n");
                     }
                 } while(input != 7);
             }
         }
     }
-}

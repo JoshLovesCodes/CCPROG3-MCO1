@@ -19,22 +19,43 @@ public class Hotel {
         this.roomList.add(new Room(this.automateNaming.getName()));
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return this.name;
     }   
     
+    
+    /** 
+     * @return ArrayList<Room>
+     */
     public ArrayList<Room> getRoomList() {
         return this.roomList;
     }
 
+    
+    /** 
+     * @return ArrayList<Reservation>
+     */
     public ArrayList<Reservation> getReservationList() {
         return this.reservationList;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getMaximumRooms() {
         return this.maximumRooms;
     }
 
+    
+    /** 
+     * @param name
+     * @return Room
+     */
     public Room getRoom(String name) {
         for(Room r : this.roomList) {
             if(r.getName().equals(name))
@@ -44,56 +65,84 @@ public class Hotel {
         return null;
     }
 
-    public Reservation getReservation(String firstName, String lastName) {
+    
+    /** 
+     * @param firstName
+     * @param lastName
+     * @return ArrayList<Reservation>
+     */
+    public ArrayList<Reservation> getReservation(String firstName, String lastName) {
+        ArrayList<Reservation> newReservationList = new ArrayList<Reservation>();
         for(Reservation reservation : this.reservationList) {
             if(reservation.getGuest().getFirstName().equals(firstName) && reservation.getGuest().getLastName().equals(lastName)) 
-                return reservation;
+                newReservationList.add(reservation);
         }
 
-        return null;
+        if(newReservationList.isEmpty())
+            return null;
+
+        return newReservationList;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getEarnings() {
         double totalEarnings = 0;
+        Fees fees = new Fees();
         for (Reservation reservation : this.reservationList) {
-            totalEarnings += reservation.getTotalPrice();
+            totalEarnings += reservation.getTotalPrice(fees);
         }
         return totalEarnings;
     }
 
+    
+    /** 
+     * @param date
+     * @return int
+     */
     public int getAvailableRooms(Date date) {
-        int freeRooms = 0;
+        int freeRooms = this.roomList.size();
         for (Reservation reservation : this.reservationList) {
-            if(reservation.getCheckInDate().getMonth() == date.getMonth()) {
-                if(!(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay())) {
-                    freeRooms++;
-                }
+            if(!(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay())) {
+                freeRooms--;
             }
+            
         }
         return freeRooms;
     }
 
+    
+    /** 
+     * @param date
+     * @return int
+     */
     public int getBookedRooms(Date date) {
         int bookedRooms = 0;
         for (Reservation reservation : this.reservationList) {
-            if(reservation.getCheckInDate().getMonth() == date.getMonth()) {
-                if(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay()) {
-                    bookedRooms++;
-                }
+            if(reservation.getCheckInDate().getDay() == date.getDay() || reservation.getCheckOutDate().getDay() == date.getDay()) {
+                bookedRooms++;
             }
+            
         }
         return bookedRooms;
     }
 
-    public boolean[] getRoomAvailability(Room room, int month) {
-        boolean[] bookedDates = new boolean[30];
+    
+    /** 
+     * @param room
+     * @return boolean[]
+     */
+    public boolean[] getRoomAvailability(Room room) {
+        boolean[] bookedDates = new boolean[31];
 
-        Arrays.fill(bookedDates, false);
+        Arrays.fill(bookedDates, true);
 
         for (Reservation reservation : this.reservationList) {
-            if(reservation.getRoom().equals(room) && reservation.getCheckInDate().getMonth() == month) {
+            if(reservation.getRoom().equals(room)) {
                 for(int i = reservation.getCheckInDate().getDay() - 1; i < reservation.getCheckOutDate().getDay(); i++) {
-                    bookedDates[i] = true;
+                    bookedDates[i] = false;
                 }
             }
         }
@@ -101,10 +150,18 @@ public class Hotel {
         return bookedDates;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean addRoom() {
         if(this.roomList.size() < this.maximumRooms) {
             this.roomList.add(new Room(this.automateNaming.getName()));
@@ -114,6 +171,11 @@ public class Hotel {
         return false;
     }
 
+    
+    /** 
+     * @param ctr
+     * @return boolean
+     */
     public boolean addRoom(int ctr) {
         if(this.roomList.size() + ctr <= this.maximumRooms) {
             for(int i = 0; i < ctr; i++)
@@ -125,6 +187,10 @@ public class Hotel {
         return false;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int removeRoom() {
 
         boolean found = false;
@@ -138,6 +204,7 @@ public class Hotel {
             }
 
             if(!found) {
+                this.automateNaming.setAvailability(room.getName());
                 this.roomList.remove(room);
                 return 1;
             }
@@ -146,6 +213,11 @@ public class Hotel {
         return 0;
     }
 
+    
+    /** 
+     * @param ctr
+     * @return int
+     */
     public int removeRoom(int ctr) {
 
         int count = 0;
@@ -157,6 +229,13 @@ public class Hotel {
         return count;
     }
     
+    
+    /** 
+     * @param guest
+     * @param checkIn
+     * @param checkOut
+     * @return boolean
+     */
     public boolean addReservation(Guest guest, Date checkIn, Date checkOut) {
         Reservation reservation = this.automateReservation.getReservation(guest, checkIn, checkOut);
         
@@ -168,6 +247,12 @@ public class Hotel {
         return false;
     }
 
+    
+    /** 
+     * @param firstName
+     * @param lastName
+     * @return boolean
+     */
     public boolean removeReservation(String firstName, String lastName) {
         for(Reservation reservation : this.reservationList) {
             if(reservation.getGuest().getFirstName().equals(firstName) && reservation.getGuest().getLastName().equals(lastName)) {

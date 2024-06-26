@@ -13,19 +13,14 @@ public class Booker {
         Hotel hotel = this.model.selectHotel(hotelName);
         if(hotel != null) {
             this.view.displayCheckIn();
-
-            int year = this.view.promptYear();
-            int month = this.view.promptMonth();
             int day = this.view.promptDay();
-            
-            Date checkIn = new Date(year, month, day);
+                
+            Date checkIn = new Date(day);
             
             this.view.displayCheckOut();
-            year = this.view.promptYear();
-            month = this.view.promptMonth();
             day = this.view.promptDay();
 
-            Date checkOut = new Date(year, month, day);
+            Date checkOut = new Date(day);
 
             String firstName = this.view.promptFirstName();
             String lastName = this.view.promptLastName();
@@ -34,6 +29,8 @@ public class Booker {
 
             if(Date.isAfter(checkIn, checkOut))
                 this.view.displayTimeFrameFailed();
+            else if(checkIn.getDay() == checkOut.getDay())
+                this.view.displaySameDayInvalid();
             else if(hotel.addReservation(guest, checkIn, checkOut)) 
                 this.view.displayReservationSuccess();
             else
