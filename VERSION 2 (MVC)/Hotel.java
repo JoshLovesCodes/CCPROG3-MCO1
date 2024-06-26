@@ -259,20 +259,13 @@ public class Hotel {
      * @return boolean
      */
     public boolean removeReservation(String firstName, String lastName) {
-        int ctr = 0;
 
         for(Reservation reservation : this.reservationList) {
             if(reservation.getGuest().getFirstName().equals(firstName) && reservation.getGuest().getLastName().equals(lastName)) {
                 this.reservationList.remove(reservation);
-                ctr++;
+                return true;
             }
-
-            if(this.reservationList.isEmpty())
-                break;
         }
-
-        if(ctr > 0)
-            return true;
 
         return false;
     }
