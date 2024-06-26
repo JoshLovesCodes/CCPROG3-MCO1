@@ -1,3 +1,11 @@
+/**
+ * The AutomateNaming class handles the automation of name generation for rooms.
+ * <p>
+ * 
+ * @author FranzColobong
+ * @version 1.0
+ * @since 2024-06-25
+ */
 import java.util.ArrayList;
 
 public class AutomateNaming {
@@ -22,6 +30,12 @@ public class AutomateNaming {
         }
     }
     
+    /**
+     * Gets .
+     * 
+     * 
+     * @return the generated name
+     */
     public String getName() {
         for(int i = 0; i < this.names.size(); i++) {
             if(this.availability[i]) {
@@ -33,6 +47,10 @@ public class AutomateNaming {
         return null;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setAvailability(String name) {
         int index = this.names.indexOf(name);
         this.availability[index] = true;

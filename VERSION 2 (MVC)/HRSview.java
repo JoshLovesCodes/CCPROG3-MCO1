@@ -9,7 +9,7 @@ public class HRSview {
     }
 
     public int promptInfoMenuResponse() {
-        System.out.println("What can I do for you today?");
+        System.out.println("\nWhat can I do for you today?");
         System.out.println("1) Create Hotel");
         System.out.println("2) View Hotel");
         System.out.println("3) Manage Hotel");
@@ -22,6 +22,10 @@ public class HRSview {
 
     public void displayWelcomeMessage() {
         System.out.println("Welcome to Hotel Reservation System!");
+    }
+
+    public void displayInvalidInput() {
+        System.out.println("Invalid input try again.");
     }
 }
 

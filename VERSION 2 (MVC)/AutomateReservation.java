@@ -9,6 +9,13 @@ public class AutomateReservation {
         this.reservationList = reservationList;
     }
 
+    
+    /** 
+     * @param guest
+     * @param checkIn
+     * @param checkOut
+     * @return Reservation
+     */
     public Reservation getReservation(Guest guest, Date checkIn, Date checkOut) {
         boolean found = false;
 
@@ -22,12 +29,14 @@ public class AutomateReservation {
 
             if(!found)
                 return new Reservation(guest, checkIn, checkOut, r);
+
+            found = false;
         }
 
         for(Room r : this.roomList) {
             for(Reservation reservation : this.reservationList) {
                 if(reservation.getRoom().equals(r)) {
-                    if(!Date.isAfter(reservation.getCheckInDate(), checkIn) && !Date.isAfter(reservation.getCheckOutDate(), checkOut)) 
+                    if(reservation.getCheckOutDate().getDay() <= checkIn.getDay()) 
                         return new Reservation(guest, checkIn, checkOut, r);
                 }
             }

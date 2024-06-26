@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class BookerView {
-    private Scanner scanenr;
+    private Scanner scanner;
 
     public BookerView() {
-        this.scanenr = new Scanner(System.in);   
+        this.scanner = new Scanner(System.in);   
     }
 
     public void displayCheckIn() {
@@ -12,37 +12,27 @@ public class BookerView {
     }
 
     public void displayCheckOut() {
-        System.out.println("Please eneter your Check Out Date");
+        System.out.println("Please enter your Check Out Date");
     }
 
     public String promptHotelName() {
         System.out.println("Enter Hotel name: ");
-        return this.scanenr.nextLine();
-    }
-    
-    public int promptYear() {
-        System.out.println("Enter year: ");
-        return this.scanenr.nextInt();
-    }
-    
-    public int promptMonth() {
-        System.out.println("Enter month: ");
-        return this.scanenr.nextInt();
+        return this.scanner.next();
     }
     
     public int promptDay() {
         System.out.println("Enter day: ");
-        return this.scanenr.nextInt();
+        return this.scanner.nextInt();
     }
     
     public String promptFirstName() {
         System.out.println("Enter your first name: ");
-        return this.scanenr.nextLine();
+        return this.scanner.next();
     }
     
     public String promptLastName() {
         System.out.println("Enter your last name: ");
-        return this.scanenr.nextLine();
+        return this.scanner.next();
     }
 
     public void displayTimeFrameFailed() {
@@ -59,5 +49,9 @@ public class BookerView {
 
     public void displayHotelNotFound() {
         System.out.println("Hotel does not exist");
+    }
+
+    public void displaySameDayInvalid() {
+        System.out.println("You can't book for just a day.");
     }    
 }
