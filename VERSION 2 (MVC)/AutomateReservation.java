@@ -17,9 +17,10 @@ public class AutomateReservation {
      * @return Reservation
      */
     public Reservation getReservation(Guest guest, Date checkIn, Date checkOut) {
-        boolean found = false;
+        boolean found;
 
         for(Room r : this.roomList) {   
+            found = false;
             for(Reservation reservation : this.reservationList) {
                 if(reservation.getRoom().equals(r)) {
                     found = true;
@@ -30,7 +31,6 @@ public class AutomateReservation {
             if(!found)
                 return new Reservation(guest, checkIn, checkOut, r);
 
-            found = false;
         }
 
         for(Room r : this.roomList) {
