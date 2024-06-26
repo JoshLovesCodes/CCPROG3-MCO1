@@ -266,6 +266,9 @@ public class Hotel {
                 this.reservationList.remove(reservation);
                 ctr++;
             }
+
+            if(this.reservationList.isEmpty())
+                break;
         }
 
         if(ctr > 0)
