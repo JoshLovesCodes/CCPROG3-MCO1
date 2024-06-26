@@ -193,9 +193,12 @@ public class Hotel {
      */
     public int removeRoom() {
 
-        boolean found = false;
+        boolean found;
 
         for(Room room : this.roomList) {
+
+            found = false;
+
             for(Reservation reservation : this.reservationList) {
                 if(room.equals(reservation.getRoom())) {
                     found = true;
