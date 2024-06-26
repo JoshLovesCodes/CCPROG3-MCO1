@@ -171,18 +171,6 @@ public class HotelManagerView {
         System.out.println("Reservation doesn't exist.");
     }
 
-    public void displayRemoveReservationInfo(String firstName, String lastName) {
-        System.out.println("Reservation of " + firstName + " " + lastName + " will be removed.");
-    }
-
-    public void displayRemoveReservationSuccess() {
-        System.out.println("Removed reservation successfully.");
-    }
-
-    public void displayRemoveReservationFailed() {
-        System.out.println("Reservation doesn't exist.");
-    }
-
     public void displayRemoveHotelInfo() {
         System.out.println("You will be removing this hotel.");
     }

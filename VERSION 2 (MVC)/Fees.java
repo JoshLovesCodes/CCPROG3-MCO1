@@ -1,5 +1,5 @@
 public class Fees {
-    private double bookingFee, baseParkingFee, amenitiesFee;
+    private double bookingFee, amenitiesFee;
 
     public Fees(double bookingFee, double amenitiesFee) {
         this.bookingFee = bookingFee;
